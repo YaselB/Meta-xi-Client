@@ -1,0 +1,26 @@
+<h1 class="p-3 text-lg font-semibold">Lista de miembros</h1>
+
+<div class="w-full flex flex-col items-center gap-2 bg-blue-950 rounded-lg p-2 scroll-container overflow-hidden relative">
+    <ul class="w-full divide-y divide-gray-200 dark:divide-gray-700">
+        @for(user of userlist; track user) {
+        <li class="w-full p-2.5 transition-opacity duration-300">
+            <div class="w-full flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                    <img class="w-9 h-9 rounded-full" [src]="'assets/avatars/' + user.id + '.png'" alt="User image">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        Felicidades {{ '****' + user.phoneNumber }}
+                    </p>
+                    <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                        {{ user.randomNumber }} listados completados hoy
+                    </p>
+                </div>
+                <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    {{ user.randomNumber * 500 }} COP
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,19 @@
+<section class="flex flex-col gap-2.5">
+    <app-notice (open)="toggleModal($event)" />
+    <app-carousel />
+    <app-actions-card />
+    <app-company class="mt-2" />
+    <app-slider />
+    <app-memberlist />
+    <app-activity />
+    <div class="w-full">
+        <hr class="my-3 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© Copyright 2024
+            <a href="#" class="hover:underline">MetaBox™</a> <br>Todos los derechos reservados.
+        </span>
+    </div>
+</section>
+
+@if(modal){
+<app-modal (closeModal)="toggleModal($event)" />
+}

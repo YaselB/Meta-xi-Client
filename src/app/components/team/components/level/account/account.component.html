@@ -1,0 +1,22 @@
+<app-back-home />
+
+<div class="w-full flex items-center justify-between bg-blue-950 p-3 rounded-xl">
+    
+    <div class="w-full flex flex-col text-left items-center gap-3 px-1 ">
+        <span>
+            Por cada Gafa adquirida por parte de tus referidos de Nivel {{lvl}} recibirás un
+            {{lvl===1?'10%':(lvl===2?'5%':'2%')}}.
+        </span>
+        <span class="w-full">
+            <p class="text-gray-400">Has recibido</p>
+            <span class="flex gap-2">
+                <p>{{retiro}}</p>COP
+            </span>
+        </span>
+    </div>
+    
+    <div class="flex flex-col items-center gap-2">
+        <img [src]="'assets/lvl/lvl'+lvl+'.png'" alt="account" class="w-32">
+        <p class="text-xl font-semibold">Nivel {{lvl}}</p>
+    </div>
+</div>

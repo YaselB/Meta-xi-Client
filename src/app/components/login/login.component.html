@@ -1,0 +1,28 @@
+<div class="fixed top-0 left-0 w-screen h-screen flex flex-col sm:flex-row">
+    <div class="flex w-screen md:w-1/2 h-1/3 sm:h-auto login_img_section ">
+        <img src="assets/others/login.jpg" alt="avatar" class="sm:hidden w-full ">
+    </div>
+
+    <div class="flex w-full sm:w-1/2 h-2/3 sm:h-auto justify-center items-center relative bg-[#3E183D]">
+        <div class="w-full h-full px-3 sm:p-5 flex flex-col absolute -top-9 gap-5">
+            <div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
+                <button (click)="email()" class="w-1/2 sm:p-4 p-2 rounded-xl text-center"
+                    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': btnC}">
+                    
+                    {{isRegistered? 'Iniciar sesión por correo electrónico': 'Registarse por correo electrónico'}}
+                </button>
+                <button (click)="telf()" class="w-1/2 h-full sm:p-4 p-2 rounded-xl text-center"
+                    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !btnC}">
+                    {{isRegistered? 'Iniciar sesión por teléfono': 'Registarse por teléfono'}}
+                </button>
+
+            </div>
+
+            <app-form  [typeLogin]="typeAuth" [isRegistered]="isRegistered"/>
+
+            <a (click)="goLogin()" class="text-center underline">
+                {{isRegistered? '¿No tienes una cuenta? Regístrate': '¿Ya tienes una cuenta? Inicia sesión'}}
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<!-- <div class="w-full  text-center">
+    <img src="assets/images/movil/1.jpg" alt="avatar" class="rounded-lg w-full h-56 sm:hidden">
+    <img src="assets/images/movil/1.jpg" alt="avatar" class="rounded-lg w-full h-[30rem] hidden sm:block">
+</div> 
+ -->
+<!-- <div class="body relative mx-auto h-[28rem] sm:h-[38rem]">
+
+    <input type="radio" name="control" id="b1" checked>
+    <input type="radio" name="control" id="b2">
+    <input type="radio" name="control" id="b3">
+    <input type="radio" name="control" id="b4">
+    <div class="content">
+        <div class="thumbnails mt-2">
+            <label for="b1"></label>
+            <label for="b2"></label>
+            <label for="b3"></label>
+            <label for="b4"></label>
+        </div>
+    </div>
+</div> -->
+
+<section class="w-full h-[23vh] sm:h-[45vh] md:h-[67vh]">
+    <div class="relative overflow-hidden h-full">
+        @for(slide of slides; track $index){
+        <img [src]="slide.src" alt="carousel-image"
+            class="absolute top-0 left-0 rounded-lg w-full h-full transition-opacity duration-1000 ease-in-out"
+            [ngClass]="{'opacity-0 invisible': current !== $index, 'opacity-100 visible': current ===$index}">
+        }
+        <!-- <button (click)="prevSlide()"
+            class="absolute top-1/2 left-6 sm:left-8 md:left-12 transform -translate-y-1/2 text-white">
+            <img src="assets\icons\next.svg" alt="previous" class="w-4 sm:w-5 md:w-7 lg:w-8 rotate-180">
+        </button>
+        <button (click)="nextSlide()"
+            class="absolute top-1/2 right-6 sm:right-8 md:right-12 transform -translate-y-1/2 text-white">
+            <img src="assets\icons\next.svg" alt="next" class="w-4 sm:w-5 md:w-7 lg:w-8">
+        </button> -->
+    </div>
+</section>

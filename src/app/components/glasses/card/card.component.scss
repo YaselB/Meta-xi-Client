@@ -1,0 +1,58 @@
+.free-form-div {
+    clip-path: polygon(25% 0, 100% 1%, 82% 100%, 0% 100%);
+}
+$anim-duration: 2; // in seconds
+$anim-speed: 1.5; // in seconds
+
+.btn-alt {
+  border: var(--btn-border);
+  color: var(--btn-text-color);
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+  }
+  &::before {
+    background: rgba(255, 255, 255, 0.774);
+    width: 100px;
+    left: 0;
+    filter: blur(30px);
+    animation: shine-alt1 #{$anim-duration}s ease-in-out infinite;
+  }
+  &::after {
+    background: rgba(255, 255, 255, 0.527);
+    width: 60px;
+    left: 60px;
+    filter: blur(5px);
+    animation: shine-alt2 #{$anim-duration}s ease-in-out infinite;
+  }
+}
+
+@keyframes shine-alt1 {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-100px) skewX(-15deg);
+  }
+  #{($anim-speed / ($anim-duration + $anim-speed) * 100%)}, 100% {
+    opacity: 0.6;
+    transform: translateX(300px) skewX(-15deg);
+  }
+}
+
+@keyframes shine-alt2 {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) skewX(-15deg);
+  }
+  #{($anim-speed / ($anim-duration + $anim-speed) * 100%)}, 100% {
+    opacity: 1;
+    transform: translateX(300px) skewX(-15deg);
+  }
+}
+

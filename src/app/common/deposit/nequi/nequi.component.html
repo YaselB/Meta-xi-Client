@@ -1,0 +1,36 @@
+<section class="w-full bg-blue-950 rounded flex items-center py-2">
+    <div class="w-full flex flex-col items-center justify-between gap-2 py-1.5">
+        <div class="bg-gray-900 w-11/12 text-2xl font-medium py-5 text-center rounded relative">
+            $ {{ saldo | number:'1.0-0' }}
+            <div class="absolute top-2 left-2 text-xs font-light">Saldo actual</div>
+        </div>
+
+        <input type="number" placeholder="Seleccione cantidad" class="p-3 rounded w-11/12 text-black"
+            [(ngModel)]="cantidadSeleccionada" />
+
+        <div class="grid grid-cols-3 gap-2 p-1">
+            @for (cantidad of cantidades; track $index) {
+            <button class="bg-black p-1.5 rounded" (click)="seleccionarCantidad(cantidad)">
+                ${{ cantidad | number:'1.0-0' }}
+            </button>
+            }
+        </div>
+
+        <div class="w-11/12 px-2 py-1.5 flex flex-col justify-start bg-slate-950 border-2 border-[#7d18ca]">
+            <p class="w-full">Tipo de pago:</p>
+            <span class="w-full flex gap-2 -mt-3 justify-center">
+                <img src="assets\token\nequi.png" alt="check" class="w-5 h-5">
+                Nequi</span>
+        </div>
+        <button class="bg-[#301E67] w-11/12 p-2.5 rounded">Recargar ahora</button>
+    </div>
+</section>
+
+<article class="p-2 sm:p-4 md:p-6 bg-blue-950 mt-2 rounded text-base">
+    <p>1. El monto mínimo de recarga es de 25.000 COP, si recarga menos que eso no se le acreditará a su balance.</p>
+    <p>2. Luego de indicar el monto de su recarga proceda a tocar "Recargar Ahora".</p>
+    <p>3. Realice captura del código QR que le aparecerá en pantalla, abra su cuenta NEQUI y realize la recarga.</p>
+    <p>4. La recarga demora entre 1 Minuto a 10 Minutos en mostrarse en su balance principal.</p>
+    <p>5. Si luego de haber pasado mucho tiempo no recibe la recarga comuníquese con atención al cliente de inmediato.
+    </p>
+</article>

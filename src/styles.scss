@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  //  background: linear-gradient(to left, #CE5959 0%, #19376D 80%);
+    color: #eee;
+    font-family: DM Sans, Helvetica Neue, Helvetica, sans-serif;
+    margin: 0;
+    height: 100%;
+    //overflow: hidden;
+}
+
+.grad {
+    background: linear-gradient(60deg, #fcecb9, #efc26f);
+}

@@ -1,0 +1,43 @@
+<section class="w-full flex flex-col  items-center bg-blue-950 rounded-lg p-2 overflow-hidden">
+    <div class="w-full text-center h-5 mt-1">
+        <p class="w-fit h-full text-black font-extralight text-sm grad px-8 free-form-div">{{name}}</p>
+    </div>
+    <div class="w-full flex justify-between  mx-auto gap-1 overflow-hidden">
+        <img [src]="'assets/glasses/tinified/'+id+'.png'" alt="img" class="w-56 -ml-8 -mb-4 rounded">
+        <div class="w-full flex flex-col items-center gap-1 text-xs font-light -ml-14">
+            <span class="w-full flex justify-between items-center">
+                <p>{{mine?'Precio (COP)':'Beneficio en porcentaje'}}</p>
+                <p>4</p>
+            </span>
+            <span class="w-full flex justify-between items-center">
+                <p>{{mine?'Días de actividad':'Dias restantes'}}</p>
+                4
+            </span>
+            <span class="w-full flex justify-between items-center">
+                <p>{{mine?'Artículos máximos':'Beneficio por hora (COP)'}}</p>
+                <span class="inline-flex items-center gap-1">
+                    <p class="">4</p>
+                </span>
+            </span>
+            <span class="w-full flex justify-between items-center">
+                <p>Beneficio diario (COP)</p>
+                <span class="inline-flex items-center gap-1">
+                    <p class="">4</p>
+                </span>
+            </span>
+            <span class="w-full flex justify-between items-center">
+                <p>Beneficio total (COP)</p>
+                <span class="inline-flex items-center gap-1">
+                    <p class="text-green-600 font-semibold">{{total}}</p>
+                </span>
+            </span>
+            @if(mine){
+            <div class="w-full flex justify-end mt-3">
+                <button class="w-4/5 flex justify-center text-sm gap-3 items-center bg-blue-900 p-1 rounded-md btn-alt">
+                    <p>Comprar Ahora</p>
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+</section>

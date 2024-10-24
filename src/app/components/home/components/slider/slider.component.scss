@@ -1,0 +1,81 @@
+.body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.gallery {
+    width: 100%;
+}
+
+.gallery-container {
+    align-items: center;
+    display: flex;
+    height: 250px; /* Altura por defecto para móviles */
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative;
+    perspective: 950px; /* Añade perspectiva para el efecto 3D */
+}
+
+/* Estilos generales para las imágenes del carrusel */
+.gallery-item {
+    height: 80%; /* Tamaño por defecto de las imágenes */
+    width: 40%; /* Tamaño por defecto de las imágenes */
+    opacity: 0; /* Inicialmente ocultas las imágenes */
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+    z-index: 0;
+    border-radius: 15px;
+    background-size: contain;
+    transform-style: preserve-3d; /* Mantiene el estilo 3D de los hijos */
+}
+
+/* Estilos específicos para cada imagen en el carrusel */
+.gallery-item-1 {
+    left: 25%;
+    opacity: .4;
+    transform: translateX(-50%);
+}
+
+.gallery-item-2 {
+    height: 100%;
+    width: 60%;
+    opacity: 1;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gallery-item-3 {
+    height: 80%;
+    width: 40%;
+    opacity: .4;
+    left: 75%;
+    transform: translateX(-50%);
+}
+
+/* Media Queries para pantallas de escritorio */
+@media (min-width: 768px) {
+    .gallery-container {
+        height: 500px; /* Altura para pantallas más grandes */
+    }
+
+    .gallery-item {
+        height: 90%; /* Tamaño ajustado para pantallas más grandes */
+        width: 30%; /* Tamaño ajustado para pantallas más grandes */
+    }
+
+    .gallery-item-1,
+    .gallery-item-3 {
+        width: 35%; /* Ajuste específico para los lados */
+    }
+
+    .gallery-item-2 {
+        width: 40%; /* Ajuste específico para la imagen central */
+        height: 100%;
+    }
+}

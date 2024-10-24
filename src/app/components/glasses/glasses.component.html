@@ -1,0 +1,39 @@
+<div class="w-full bg-blue-950 flex justify-center flex-col gap-3 items-center px-8 py-4 rounded-lg">
+    <div class="w-full flex items-center gap-3 border-b-[0.1px] border-gray-500 pb-2 text-base">
+        <button class="w-1/2 flex flex-col items-center">
+            <p>Ganancias obtenidas hoy</p>
+            <span class="text-2xl">{{todayProfits}}</span>
+        </button>
+        <button class="w-1/2 flex flex-col items-center">
+            <p>Todas las ganancias</p>
+            <span class="text-2xl">{{profits}}</span>
+        </button>
+    </div>
+    <div class="w-full flex items-center">
+        <article class="w-1/2 flex flex-col ">
+            {{balance}}
+            <p class="text-slate-400">Balance Total</p>
+        </article>
+        <div class="w-1/2 flex justify-end">
+            <button class="bg-black py-1 px-4 rounded-xl text-sm">
+                Reacargar
+            </button>
+        </div>
+    </div>
+</div>
+<div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
+    <button (click)="gafasVR()" class="w-1/2 py-3 rounded-xl"
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': notMine}">
+        Gafas VR
+    </button>
+    <button (click)="myGafas()" class="w-1/2 py-3 rounded-xl"
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !notMine}">
+        Mis GAFAS
+    </button>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 mx-auto">
+    @for (gafas of list; track $index) {
+    <app-card [data]="gafas" [mine]="notMine"/>
+    }
+</div>

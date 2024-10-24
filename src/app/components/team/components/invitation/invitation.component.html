@@ -1,0 +1,16 @@
+<article class="w-full flex flex-col gap-1 grad text-black rounded-xl p-4">
+    <h5 class="text-sm">Código de invitación: </h5>
+    <div class="w-full flex items-center justify-between">
+        <p class="text-2xl font-bold">{{ code }}</p>
+        <button #codeButton (click)="copyToClipboard(code, codeButton)"
+            class="bg-black py-0.5 px-3 text-sm rounded-xl text-white">Copiar</button>
+    </div>
+    <div class="w-full flex flex-col">
+        <p class="text-sm">Comparte tu enlace de referencia y comienza a ganar plata.</p>
+        <div class="w-full flex items-center justify-between">
+            <p class="truncate overflow-hidden text-ellipsis">{{ link }}</p>
+            <button #linkButton (click)="copyToClipboard(link, linkButton)"
+                class="bg-black py-0.5 px-3 text-sm rounded-xl text-white ml-4">Copiar</button>
+        </div>
+    </div>
+</article>

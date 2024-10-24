@@ -1,0 +1,61 @@
+<div class="absolute top-0 left-0 w-full h-24 bg-blue-950 rounded-b-3xl"></div>
+<div class="w-full relative -bottom-4 z-50 flex flex-col items-center gap-5">
+    <header class="w-full bg-[#E3F4F4] rounded-lg p-5 flex justify-start gap-5 items-center">
+        <img src="assets/icons/avatar.png" alt="avatar" class="w-12">
+        <p class="text-gray-800 text-lg font-medium">{{email}}</p>
+    </header>
+
+    <article class="w-full flex flex-col justify-center items-center gap-3 p-5 bg-art rounded-lg text-sm">
+        <span class="flex items-center gap-4 justify-center">Balance total (COP)
+            <p class="text-xl font-semibold">{{total}}</p>
+        </span>
+        <span class="flex items-center gap-4 justify-center">Balance total (USD)
+            <p class="text-xl font-semibold">{{monto}}</p>
+        </span>
+    </article>
+
+    <div class="w-full flex justify-around items-center py-3.5 rounded-lg bg-blue-950">
+        <button [routerLink]="['/recharge']" class="flex flex-col items-center gap-2">
+            <span class="bg-[#08635E] p-2.5 rounded-xl">
+                <img src="assets/meactions/recarga.svg" alt="recarga" class="w-7">
+            </span>
+            <p class="text-xs">Recargar</p>
+        </button>
+
+        <button [routerLink]="['/withdraw']" class="flex flex-col items-center gap-2">
+            <span class="bg-[#3F2787] p-2.5 rounded-xl">
+                <img src="assets/meactions/retirar.svg" alt="retirar" class="w-7">
+            </span>
+            <p class="text-xs">Retirar</p>
+        </button>
+
+        <button [routerLink]="['/tasks']" class="flex flex-col items-center gap-2">
+            <span class="bg-[#462C6B] p-2.5 rounded-xl">
+                <img src="assets/meactions/registros.svg" alt="registros" class="w-7">
+            </span>
+            <p class="text-xs">Inversión</p>
+        </button>
+        <button [routerLink]="['/account']" class="flex flex-col items-center gap-2">
+            <span class="bg-[#57483E] p-2.5 rounded-xl">
+                <img src="assets/meactions/cuenta.svg" alt="cuenta" class="w-7">
+            </span>
+            <p class="text-xs">Cuenta</p>
+        </button>
+    </div>
+
+    <button [routerLink]="['/password']"
+        class="w-full flex justify-between items-center text-[#E3F4F4] bg-blue-950 py-3 px-4 rounded-lg shadow-2xl">
+        <div class="w-full flex items-center gap-2">
+            <span class="bg-[#301E67] p-2 rounded-xl">
+                <img src="assets/icons/pass.svg" alt="pass" class="w-5">
+            </span>
+            Cambiar contraseña
+        </div>
+        <img src="assets/icons/next.svg" alt="next" class="w-6">
+    </button>
+
+    <button [routerLink]="['/login']" class="w-full flex justify-center items-center gap-2 bg-blue-950 py-3 rounded-lg">
+        <img src="assets/icons/logout.svg" alt="logout" class="w-5">
+        <p class="text-sm">Desconectar</p>
+    </button>
+</div>

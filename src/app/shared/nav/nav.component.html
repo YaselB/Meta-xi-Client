@@ -1,0 +1,15 @@
+@if (!isLogined) {
+    <nav [ngClass]="{
+        'bg-blue-950 transition-colors duration-500': !isMeRoute && isScrolled, 
+        'bg-transparent transition-colors duration-500': !isMeRoute && !isScrolled
+      }" class="fixed top-0 z-20 w-full flex items-center justify-between box-border py-3 px-4">
+        <div class="flex items-center gap-2">
+            <img src="assets/icons/metabox.png" alt="nequi" class="w-7 rounded-full">
+            <p>MetaBox</p>
+        </div>
+        <div class="flex items-center bg-[#0E2954] rounded-full gap-2 px-3 py-1 text-sm btn-alt">
+            <img src="assets/icons/dailyquest.svg" alt="dailyquest" class="w-4 -mt-1">
+            <p>Bono de bienvenida</p>
+        </div>
+    </nav>
+}

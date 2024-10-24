@@ -1,0 +1,20 @@
+<h1 class="uppercase text-center text-xl font-normal">{{title}}</h1>
+<div class="sm:w-4/5 mx-auto flex flex-col px-1.5 py-3 sm:px-3 sm:py-5  bg-blue-950 rounded-lg gap-2 sm:gap-4">
+
+    <head class="flex justify-start items-center gap-2">
+        <img [src]="'assets/token/' + token + '.' + format" alt="logo" class="w-8 rounded-full">
+        <p>{{token | uppercase }}</p>
+        <p class="text-xs text-red-400">Mínimo {{minimo}} {{currency}}</p>
+    </head>
+    <div class="relative w-full rounded" [ngStyle]="{'border': '1px solid ' + ring}">
+        <div class="bg-black rounded p-1 w-full">{{ link }}</div>
+        <button #linkButton (click)="copyToClipboard(link, linkButton)"
+            class="bg-[#301E67] py-0 px-1.5 text-xs rounded absolute inset-y-0 right-0">Copiar</button>
+    </div>
+    @if(btnText === 'Confirmar'){
+    <app-fileupload />
+    }
+    <button (click)="complete()" class="w-full px-4 py-4 cursor-pointer bg-[#301E67] font-semibold rounded-md">
+        {{btnText}}
+    </button>
+</div>

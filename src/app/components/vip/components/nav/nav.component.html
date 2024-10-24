@@ -1,0 +1,14 @@
+<div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
+    <button (click)="getMisiones()" class="w-1/2 py-3 rounded-xl"
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': misiones}">
+        Misiones
+    </button>
+    <button (click)="getTendencia()" class="w-1/2 py-3 rounded-xl"
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': tendences}">
+        En tendencia
+    </button>
+    <button (click)="getTerminadas()" class="w-1/2 py-3 rounded-xl"
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': finalize}">
+        Terminadas
+    </button>
+</div>

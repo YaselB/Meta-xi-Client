@@ -1,0 +1,21 @@
+<div class="w-full bg-blue-950 flex justify-center flex-col gap-3 items-center px-8 py-4 rounded-lg">
+    <div class="w-full flex items-center gap-3 border-b-[0.1px] border-gray-500 pb-2 text-base">
+        <button class="w-1/2 flex flex-col items-center">
+            <p>Misiones completadas hoy</p>
+            <span class="text-2xl">{{todayMission}}</span>
+        </button>
+        <button class="w-1/2 flex flex-col items-center">
+            <p>Misiones completadas en total </p>
+            <span class="text-2xl">{{missions}}</span>
+        </button>
+    </div>
+    <div class="w-full flex items-center">
+        <article class="w-full flex flex-col ">
+            {{cliam}} COP
+            <p class="text-slate-400">Disponible para reclamar</p>
+        </article>
+        
+    </div>
+    <button class="p-2 grad w-full text-black font-semibold rounded-lg shadow">Reclamar</button>
+</div>
+<app-nav/>
