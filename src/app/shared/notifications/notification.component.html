@@ -1,0 +1,4 @@
+<div class="notification" [ngClass]="{'success': type === 'success', 'error': type === 'error'}"  *ngIf="isVisible">
+    <span>{{message}}</span>
+    <button class="close-btn" (click)="hide()">x</button>
+</div>

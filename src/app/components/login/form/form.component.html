@@ -1,62 +1,49 @@
+<app-notification *ngIf="message" [message]="message" [type]="messageType"></app-notification>
 <form class="px-4 flex flex-col sm:gap-5 gap-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Campo de usuario -->
     <div class="mb-2">
         <label for="username" class="block sm:py-4 pb-2">{{typeLogin}}:</label>
         <div class="flex">
-            @if (typeLogin==='Número de teléfono') {
-            <span
-                class="inline-flex items-center px-3 bg-gray-200 border border-r-0 border-gray-300 text-gray-900 rounded-l-md">
-                +57
-            </span>
-            }
+            <span *ngIf="typeLogin==='Número de teléfono'" class="inline-flex items-center px-3 bg-gray-200 border border-r-0 border-gray-300 text-gray-900 rounded-l-md">+57</span>
             <input id="username" type="text" formControlName="username"
                 [ngClass]="{'rounded-md': typeLogin!=='Número de teléfono'}"
                 class="w-full px-3 py-2 border text-gray-900 border-gray-300 rounded-r-md focus:outline-none focus:ring focus:ring-blue-500"
                 placeholder="{{typeLogin}}" />
         </div>
-        @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
-        <small class="text-red-500">{{typeLogin}} is required.</small>
-        }
+        <small *ngIf="loginForm.get('username')?.errors?.['usernameInvalid'] && loginForm.get('username')?.touched" class="text-red-500">{{loginForm.get('username')?.errors?.['usernameInvalid']}}</small>
     </div>
-    <div class="mb-2 ">
+
+    <!-- Campo de contraseña -->
+    <div class="mb-2">
         <label for="password" class="block sm:py-4 pb-2">Contraseña:</label>
         <div class="relative">
             <input id="password" [type]="passwordFieldType" formControlName="password"
                 class="w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
                 placeholder="Contraseña" />
-            <span (click)="togglePasswordVisibility()"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
-                @if (passwordFieldType === 'password') {
-                <img src="assets/icons/eye.svg" alt="Show password" class="w-6">
-                }
-                @else {
-                <img src="assets/icons/eyeblock.svg" alt="Hide password" class="w-6">
-                }
+            <span (click)="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+                <img [src]="passwordFieldType === 'password' ? 'assets/icons/eye.svg' : 'assets/icons/eyeblock.svg'" alt="Toggle password visibility" class="w-6">
             </span>
         </div>
-        @if(!isRegistered){
-        <label for="password" class="block sm:py-4 pb-2 mt-3">Repetir contraseña:</label>
-        <div class="relative">
-            <input id="newPassword" [type]="passwordFieldType" formControlName="password"
-                class="w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
-                placeholder="Repita su contraseña" />
-            <span (click)="togglePasswordVisibility()"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
-                @if (passwordFieldType === 'password') {
-                <img src="assets/icons/eye.svg" alt="Show password" class="w-6">
-                }
-                @else {
-                <img src="assets/icons/eyeblock.svg" alt="Hide password" class="w-6">
-                }
-            </span>
-        </div>
-        }
-        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
-        <small class="text-red-500">Password is required.</small>
-        }
+        <small *ngIf="loginForm.get('password')?.errors?.['passwordInvalid'] && loginForm.get('password')?.touched" class="text-red-500">{{loginForm.get('password')?.errors?.['passwordInvalid']}}</small>
     </div>
 
-    <button type="submit" class="w-full px-4 py-4 cursor-pointer bg-[#301E67] font-semibold rounded-md"
-        [disabled]="loginForm.invalid">
+    <!-- Campo de repetir contraseña -->
+    <div *ngIf="!isRegistered" class="mb-2">
+        <label for="newPassword" class="block sm:py-4 pb-2 mt-3">Repetir contraseña:</label>
+        <div class="relative">
+            <input id="newPassword" [type]="passwordFieldType" formControlName="newPassword"
+                class="w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+                placeholder="Repita su contraseña" />
+            <span (click)="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+                <img [src]="passwordFieldType === 'password' ? 'assets/icons/eye.svg' : 'assets/icons/eyeblock.svg'" alt="Toggle password visibility" class="w-6">
+            </span>
+        </div>
+        <small *ngIf="loginForm.get('newPassword')?.errors?.['required'] && loginForm.get('newPassword')?.touched" class="text-red-500">Repetir contraseña es requerido.</small>
+        <small *ngIf="loginForm.errors?.['mismatch'] && loginForm.get('newPassword')?.touched" class="text-red-500">Las contraseñas no coinciden.</small>
+    </div>
+
+    <button type="submit" class="w-full px-4 py-4 cursor-pointer bg-[#301E67] font-semibold rounded-md">
         {{isRegistered ? 'Iniciar Sesión' : 'Registrarse'}}
     </button>
 </form>
+

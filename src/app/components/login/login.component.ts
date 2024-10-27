@@ -20,11 +20,13 @@ export class LoginComponent {
   email() {
     this.btnC = true;
     this.typeAuth = 'Correo electrónico';
+    console.log('typeAuth cambiado a :',this.typeAuth);
   }
 
   telf() {
     this.btnC = false;
     this.typeAuth = 'Número de teléfono';
+    console.log('typeAuth cambiado a :',this.typeAuth);
   }
   goLogin(){
     this.isRegistered = !this.isRegistered;
