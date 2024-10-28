@@ -1,11 +1,22 @@
 <div class="fixed inset-0 flex items-center justify-center z-50">
     <div class="absolute inset-0 bg-black opacity-50" (click)="close()"></div>
-    <div class="w-11/12 bg-blue-950 rounded-lg p-6 z-10">
+    <div class=" relative w-11/12 bg-blue-950 rounded-lg p-6 z-10">
+        <button
+        (click)="close()"
+        class="absolute top-2 right-3 bg-transparent text-white text-xl font-bold rounded-full focus:outline-none hover:bg-gray-700 hover:bg-opacity-50 p-2"
+        aria-label="Cerrar"
+        >
+        X
+        </button>
         <h2 class="text-lg font-bold">Anuncio</h2>
-        <p class="mt-2">MetaBox tiene como objetivo cambiar la manera en las que las personas viven y trabajan.
-            Actualmente se utiliza en más de 100 países y regiones de todo el mundo. Nuestro objetivo es desarrollar
-            servicios de "vida baja en carbono" que ahorren energía y sean más repetuosas con el medioambiente para el
-            mundo. Una mejor relación entre las personas y la naturaleza en términos de estilo de vida en general.</p>
-        <button (click)="close()" class="mt-4 px-4 py-2 bg-[#301E67] text-white rounded">Cerrar</button>
+        <p class="mt-2">        
+            Recibe 2,500 COP como regalo de bienvenida, es gratis. Puedes retirar plata sin invertir completando las misiones. MetaBox es un proyecto único y legítimo.
+            Puedes comunicarte con atención al cliente mediante "Telegram" utilizando los contactos al final de la página. 
+            En nuestro canal de Youtube puedes encontrar tutoriales que te ayudarán a mejorar tu experiencia en MetaBox. 
+            La comisión de retiro es de tan solo un 6%. El mínimo de depósito es de 25,000 COP. El mínimo de retiro es de 15,000 COP. 
+            Compra ahora gafas VR y aumenta tu rango de ganancias.</p>
+            <div class="flex justify-center">
+                <button (click)="close()" class="mt-4 px-4 py-2 bg-[#301E67] text-white rounded">Cerrar</button>
+            </div>
     </div>
 </div>

@@ -1,7 +1,10 @@
 .bg-nav{
     background: linear-gradient(to left, #CE5959 0%, #19376D 80%);
 }
-
+.icono {
+  scale: 2.0;
+  overflow: visible;
+}
 
 $anim-duration: 2; // in seconds
 $anim-speed: 1.5; // in seconds
@@ -10,7 +13,7 @@ $anim-speed: 1.5; // in seconds
   border: var(--btn-border);
   color: var(--btn-text-color);
   position: relative;
-  overflow: hidden;
+  
 
   &::before,
   &::after {

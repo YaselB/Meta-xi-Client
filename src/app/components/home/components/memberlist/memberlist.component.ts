@@ -25,7 +25,7 @@ export class MemberlistComponent {
   }
 
   generateRandomID() {
-    return Math.floor(Math.random() * 14) + 0;
+    return Math.floor(Math.random() * 42) + 0;
   }
 
   generateUserList() {

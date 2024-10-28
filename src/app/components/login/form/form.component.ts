@@ -34,7 +34,7 @@ export class FormComponent {
       this.codeReferrer = params.get('code');
     })
     const formControls = {
-      username: ['', [Validators.required, this.userNameValidator(this.typeLogin)]],
+      username: ['', [Validators.required, this.userNameValidator(this.typeLogin) , Validators.pattern(/^\d+$/)]],
       password: ['', [Validators.required, this.passwordValidator]],
       newPassword: this.isRegistered ? null : ['', Validators.required] 
     };
@@ -223,6 +223,13 @@ async onSubmit() {
       }
       throw errorMsg;
     }
+}
+
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    const Key = event.key;
+    if(!/^[0-9]$/.test(Key) && Key !== 'Backspace' && Key !== 'Delete') {
+      event.preventDefault();
+  }
 }
 }
 
