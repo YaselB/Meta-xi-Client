@@ -7,7 +7,8 @@
             <span *ngIf="typeLogin==='Número de teléfono'" class="inline-flex items-center px-3 bg-gray-200 border border-r-0 border-gray-300 text-gray-900 rounded-l-md">+57</span>
             <input id="username"    
                 type="typeLogin === 'Número de teléfono' ? 'tel' : 'text'"
-                pattern="\d*"
+                pattern="[0-9]"
+                inputmode="numeric"
                 formControlName="username"
                 (keypress)="allowOnlyNumbers($event)"
                 [ngClass]="{'rounded-md': typeLogin!=='Número de teléfono'}"
