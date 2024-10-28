@@ -8,7 +8,7 @@
             <input id="username"    
                 type="typeLogin === 'Número de teléfono' ? 'tel' : 'text'"
                 pattern="[0-9]"
-                inputmode="numeric"
+                inputmode="typeLogin === 'Número de teléfono' ? 'numeric' : 'text'"
                 formControlName="username"
                 (keypress)="allowOnlyNumbers($event)"
                 [ngClass]="{'rounded-md': typeLogin!=='Número de teléfono'}"
