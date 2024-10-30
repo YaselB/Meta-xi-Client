@@ -6,11 +6,10 @@
         <div class="flex">
             <span *ngIf="typeLogin==='Número de teléfono'" class="inline-flex items-center px-3 bg-gray-200 border border-r-0 border-gray-300 text-gray-900 rounded-l-md">+57</span>
             <input id="username"    
-                type="typeLogin === 'Número de teléfono' ? 'tel' : 'text'"
-                pattern="[0-9]"
-                inputmode="typeLogin === 'Número de teléfono' ? 'numeric' : 'text'"
+                [attr.type]="typeLogin === 'Número de teléfono' ? 'tel' : 'text'"
+                [attr.inputmode]="typeLogin === 'Número de teléfono' ? 'numeric' : 'text'"
                 formControlName="username"
-                (keypress)="allowOnlyNumbers($event)"
+                (keypress)="typeLogin === 'Número de teléfono' ? allowOnlyNumbers($event) : null"
                 [ngClass]="{'rounded-md': typeLogin!=='Número de teléfono'}"
                 class="w-full px-3 py-2 border text-gray-900 border-gray-300 rounded-r-md focus:outline-none focus:ring focus:ring-blue-500"
                 placeholder="{{typeLogin}}" />

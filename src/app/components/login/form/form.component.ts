@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, inject, Input, SimpleChanges } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {ActivatedRoute , Router } from '@angular/router';
-import { HttpClient, HttpClientModule, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { firstValueFrom} from 'rxjs';
 import { LoginData } from './login.model';
 import { CommonModule } from '@angular/common';
@@ -34,7 +34,7 @@ export class FormComponent {
       this.codeReferrer = params.get('code');
     })
     const formControls = {
-      username: ['', [Validators.required, this.userNameValidator(this.typeLogin) , Validators.pattern(/^\d+$/)]],
+      username: ['', [Validators.required, this.userNameValidator(this.typeLogin), ...(this.typeLogin === 'Número de teléfono' ? [Validators.pattern(/^\d+$/)] : [])]],
       password: ['', [Validators.required, this.passwordValidator]],
       newPassword: this.isRegistered ? null : ['', Validators.required] 
     };
@@ -65,8 +65,6 @@ export class FormComponent {
         }
     }
 }
-
-
   userNameValidator(typeLogin: string) {
     return (control: AbstractControl): { [key: string]: string } | null => {
       const username = control.value;
@@ -139,6 +137,7 @@ async onSubmit() {
             const response = await this.login(loginData);
             this.message = "Login exitoso";
             localStorage.setItem('token', response);
+            localStorage.setItem('username', username);
             this.messageType = 'success';
             setTimeout(()=>{
               this.router.navigate(['../home']);
@@ -148,7 +147,7 @@ async onSubmit() {
             this.messageType = 'error';
             setTimeout(()=>{
               this.message = '';
-              this.messageType = 'success';
+              this.messageType = 'error';
             },2000);
           }
       } else {
@@ -159,6 +158,7 @@ async onSubmit() {
             console.log(registerData);
             const response  = await this.register(registerData);
             console.log(response.status);
+            localStorage.setItem('username', username);
             this.message = response.message;
             this.messageType = 'success';
             setTimeout(()=>{
@@ -208,6 +208,7 @@ async onSubmit() {
       if (response.status === 200) {
         return response.body;
       } else if (response.status === 400) {
+        console.log(response.body);
         return 'Error: ' + response.body;
       } else if (response.status === 404) {
         return 'Error: ' + response.body;

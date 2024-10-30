@@ -10,30 +10,35 @@ import { NgClass } from '@angular/common';
 export class CardComponent implements OnInit {
   @Input() data:any={};
   @Input() mine:any=false
-  id: number = 0;
+  idPlan: string = '';
   name: string = '';
   price: number = 0;
-  total: number = 0;
-  currency: string = '';
+  maxQuantity: number = 0;
+  daysActive: number = 0;
+  dailyBenefit: number = 0;
+  totalBenefit: number = 0;
+
 
   ngOnInit(): void {
     this.cleanData()
   }
 
   cleanData(){
-    const {id, name, price, total, currency} = this.data;
-    this.id = id;
+    const {idPlan, name, price , maxQuantity , daysActive , dailyBenefit , totalBenefit} = this.data;
+    this.idPlan = idPlan;
     this.name = name;
     this.price = price;
-    this.total = total;
-    this.currency = currency;
+    this.maxQuantity = maxQuantity;
+    this.daysActive = daysActive;
+    this.dailyBenefit = dailyBenefit;
+    this.totalBenefit = totalBenefit;
   }
 
   getSrcSet(id: number): string {
     return `
-      assets/glasses/${id}.png 300w,
-      assets/glasses/${id}.png 600w,
-      assets/glasses/${id}.png 1200w
+      assets/glasses/vr${id}.png 300w,
+      assets/glasses/vr${id}.png 600w,
+      assets/glasses/vr${id}.png 1200w
     `;
   }
 }

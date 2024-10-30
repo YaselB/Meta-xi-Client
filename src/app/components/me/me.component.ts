@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './me.component.scss',
 })
 export class MeComponent {
-  email = 'algo@mail.com';
+  email = localStorage.getItem('username');
   monto = '0.00';
   total = 0;
 }

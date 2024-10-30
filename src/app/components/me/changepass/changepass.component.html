@@ -1,8 +1,37 @@
 <app-back-home/>
-
-<div class="w-full flex flex-col gap-3 bg-blue-950 p-5 rounded-xl text-gray-800">
-    <input placeholder="Contraseña anterior" class="w-full p-3 rounded-lg" type="password">
-    <input placeholder="Nueva contraseña" class="w-full p-3 rounded-lg" type="password">
-    <input placeholder="Re-ingrese nueva contraseña" class="w-full p-3 rounded-lg" type="password">
-    <button class="bg-[#301E67] p-3 rounded-lg shadow-xl">Confirmar</button>
-</div>
+<app-notification *ngIf="message" [message]="message" [type]="messageType"></app-notification>
+<form [formGroup]="passwordForm" (ngSubmit)="OnSubmit()" class="w-full flex flex-col gap-3 bg-blue-950 p-5 rounded-xl text-gray-800">
+    <div class="relative w-full">
+        <input [type]="passwordFieldTypeOld" formControlName="oldPassword" placeholder="Contraseña anterior" class="w-full p-3 rounded-lg" type="password">
+    <span (click)="togglePasswordVisibility('old')" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+        <img [src]="passwordFieldTypeOld === 'password' ? 'assets/icons/eye.svg' : 'assets/icons/eyeblock.svg'" alt="Toggle password visibility" class="w-6">
+    </span>
+    </div>
+    <div *ngIf="passwordForm.get('oldPassword')?.invalid && (passwordForm.get('oldPassword')?.dirty || passwordForm.get('oldPassword')?.touched)" class="text-red-500 text-sm">
+        La contraseña anterior es obligatoria
+    </div>
+    <div class="relative w-full">
+        <input [type]="passwordFieldTypeNew" formControlName="newPassword" placeholder="Nueva contraseña" class="w-full p-3 rounded-lg" type="password">
+    <span (click)="togglePasswordVisibility('new')" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+        <img [src]="passwordFieldTypeNew === 'password' ? 'assets/icons/eye.svg' : 'assets/icons/eyeblock.svg'" alt="Toggle password visibility" class="w-6">
+    </span>
+    </div>
+    <div *ngIf="passwordForm.get('newPassword')?.errors && (passwordForm.get('newPassword')?.dirty || passwordForm.get('newPassword')?.touched)" class="text-red-500 text-sm">
+        <div *ngIf="passwordForm.get('newPassword')?.hasError('passwordInvalid')">
+            {{passwordForm.get('newPassword')?.getError('passwordInvalid')}}
+        </div>
+    </div>
+    <div class="relative w-full">
+        <input [type]="passwordFieldTypeConfirm" formControlName="confirmPassword" placeholder="Re-ingrese nueva contraseña" class="w-full p-3 rounded-lg" type="password">
+    <span (click)="togglePasswordVisibility('confirm')" class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer">
+        <img [src]="passwordFieldTypeConfirm === 'password' ? 'assets/icons/eye.svg' : 'assets/icons/eyeblock.svg'" alt="Toggle password visibility" class="w-6">
+    </span>
+    </div>
+    <div *ngIf="passwordForm.get('confirmPassword')?.errors && (passwordForm.get('confirmPassword')?.dirty || passwordForm.get('confirmPassword')?.touched)" class="text-red-500 text-sm">
+        Confirmar contraseña es obligatoria
+    </div>
+    <div *ngIf="passwordForm.hasError('passwordMismatch')" class="text-red-500">
+        Las contraseñas no coinciden
+    </div>
+    <button class="bg-[#301E67] text-white p-3 rounded-lg shadow-xl">Confirmar</button>
+</form>

@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
 })
 export class BarComponent {
   coin = 0;
-  email = 'algo@mail.com';
+  email = localStorage.getItem('username');
   vip=0
 }
