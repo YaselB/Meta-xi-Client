@@ -39,7 +39,7 @@ export class TasksComponent implements OnInit {
     this.notMine = false;
   }
   async GetPlans() : Promise<any>{
-    const url = 'http://localhost:5071/api/Plans/Plans';
+    const url = 'https://meta-xi-api-production.up.railway.app/api/Plans/Plans';
     try {
       const response = await firstValueFrom(this.http.get(url));
       console.log(response);

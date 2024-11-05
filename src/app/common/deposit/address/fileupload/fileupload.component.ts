@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TelegramService } from '../../../../services/products/Telegram.service';
+import { NotificationService } from '../../../../services/products/notification.service';
 
 @Component({
   selector: 'app-fileupload',
@@ -8,23 +10,29 @@ import { Component } from '@angular/core';
   styleUrl: './fileupload.component.scss',
 })
 export class FileuploadComponent {
+  @Input() token : string = ''
   fileName: string = '';
+  selectedFile: File | null = null;
+  constructor(
+    private telegramService: TelegramService,
+    private notification : NotificationService
+  ){};
+  
 
-  ok() {
-    console.log('ok');
-    alert('ok');
-  }
-
-  onFileSelected(event: any) {
+  
+  onFileSelected(event: any){
     const file = event.target.files[0];
-    const validImageTypes = ['image/png', 'image/jpeg', 'image/webp'];
+    const validImageTypes = ['image/png' , 'image/jpeg' ,'image/webp'];
 
-    if (file && validImageTypes.includes(file.type)) {
+    if(file && validImageTypes.includes(file.type)){
       this.fileName = file.name;
-    } else {
-      console.error(
-        'Tipo de archivo no válido. Solo se permiten PNG, JPG y WEBP.'
-      );
-    }
+      this.selectedFile = file;
+      const username = localStorage.getItem('username');
+      const caption = `Usuario : ${username}\nToken: ${this.token}`
+      this.telegramService.sendPhoto(file ,caption);
+      this.notification.correct('Archivo enviado correctamente');
+    }else{
+      this.notification.errorMessage('Tipo de archivo no válido. Solo se permiten archivos PNG, JPG y WEBP.');
   }
+}
 }

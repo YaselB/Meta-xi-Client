@@ -4,12 +4,12 @@ import { AbstractControl,ReactiveFormsModule, FormControl, FormGroup, FormsModul
 import { CommonModule } from '@angular/common';
 import { HttpClient , HttpClientModule } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { NotificationComponent } from "../../../shared/notifications/notification.component";
+import { NotificationService } from '../../../services/products/notification.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-changepass',
   standalone: true,
-  imports: [BackHomeComponent, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, NotificationComponent],
+  imports: [BackHomeComponent, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule],
   templateUrl: './changepass.component.html',
   styleUrl: './changepass.component.scss',
 })
@@ -22,7 +22,7 @@ export class ChangepassComponent implements OnInit {
   messageType: 'success' | 'error' = 'success';
   private http = inject(HttpClient);
   router = inject(Router);
-
+  constructor(private notification : NotificationService) {}
   ngOnInit(): void {
     this.passwordForm = new FormGroup(
       {
@@ -51,19 +51,12 @@ export class ChangepassComponent implements OnInit {
         try {
             const response = await this.ChangePassword({ Username: username, OldPassword: oldPassword, NewPassword: newPassword });
             console.log(response.message);
-            this.message = response.message; // Asegúrate de que esto sea correcto según tu respuesta
-            this.messageType = 'success';
+            this.notification.correct(response.message);
             setTimeout(() => {
                 this.router.navigate(['../me']);
-            }, 2000);
+            }, 6000);
         } catch (error) {
-            // Asegúrate de que el error tenga un mensaje
-            this.message = `${error}`; // Captura el mensaje del error
-            this.messageType = 'error';
-            setTimeout(() => {
-                this.message = '';
-                this.messageType = 'error';
-            }, 2000);
+            this.notification.errorMessage(`${error}`);
         }
     }
 }

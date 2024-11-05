@@ -1,5 +1,5 @@
 <app-back-home/>
-<app-notification *ngIf="message" [message]="message" [type]="messageType"></app-notification>
+
 <form [formGroup]="passwordForm" (ngSubmit)="OnSubmit()" class="w-full flex flex-col gap-3 bg-blue-950 p-5 rounded-xl text-gray-800">
     <div class="relative w-full">
         <input [type]="passwordFieldTypeOld" formControlName="oldPassword" placeholder="Contraseña anterior" class="w-full p-3 rounded-lg" type="password">

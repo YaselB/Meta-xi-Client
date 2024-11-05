@@ -6,13 +6,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { firstValueFrom} from 'rxjs';
 import { LoginData } from './login.model';
 import { CommonModule } from '@angular/common';
-import { NotificationComponent } from "../../../shared/notifications/notification.component";
+import { NotificationService } from '../../../services/products/notification.service';
+
 
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, HttpClientModule, NotificationComponent, CommonModule],
+  imports: [ReactiveFormsModule, NgClass, HttpClientModule, CommonModule],
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })
@@ -28,7 +29,7 @@ export class FormComponent {
   messageType: 'success' | 'error' = 'success';
   router = inject(Router);
   codeReferrer: string | null = null;
-
+  constructor(private notification : NotificationService) {}
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params =>{
       this.codeReferrer = params.get('code');
@@ -138,17 +139,13 @@ async onSubmit() {
             this.message = "Login exitoso";
             localStorage.setItem('token', response);
             localStorage.setItem('username', username);
-            this.messageType = 'success';
+            console.log(response);
+            this.notification.correct('Login exitoso');
             setTimeout(()=>{
-              this.router.navigate(['../home']);
-            },5000)
+              this.router.navigate(['/home']);
+            },6000);
           } catch (error) {
-            this.message = `${error}`;
-            this.messageType = 'error';
-            setTimeout(()=>{
-              this.message = '';
-              this.messageType = 'error';
-            },2000);
+            this.notification.errorMessage(`${error}`);
           }
       } else {
         const registerData :LoginData = this.typeLogin === 'Número de teléfono'
@@ -159,21 +156,13 @@ async onSubmit() {
             const response  = await this.register(registerData);
             console.log(response.status);
             localStorage.setItem('username', username);
-            this.message = response.message;
-            this.messageType = 'success';
+            this.notification.correct(response.message);
             setTimeout(()=>{
-              this.router.navigate(['../home']);
-            },5000)
+              this.router.navigate(['/home']);
+            },6000);
           } catch (error) {
             console.error(error);
-            alert(error);
-            this.message = `${error}`;
-            this.messageType = 'error';
-            console.log(this.message);
-            setTimeout(()=>{
-              this.message = '';
-              this.messageType = 'success';
-            }, 2000);
+            this.notification.errorMessage(`${error}`);
           }
         
       }
