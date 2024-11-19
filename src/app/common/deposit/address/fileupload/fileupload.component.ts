@@ -17,9 +17,6 @@ export class FileuploadComponent {
     private telegramService: TelegramService,
     private notification : NotificationService
   ){};
-  
-
-  
   onFileSelected(event: any){
     const file = event.target.files[0];
     const validImageTypes = ['image/png' , 'image/jpeg' ,'image/webp'];

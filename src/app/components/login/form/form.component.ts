@@ -83,26 +83,11 @@ export class FormComponent {
   }
   passwordValidator( control : AbstractControl):  { [key: string]: string } | null{
     const password = control.value;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumeric = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     const isValidLength = password && password.length >= 6;
     if (!isValidLength) {
       return { passwordInvalid: 'La contraseña debe tener al menos 6 caracteres.' };
     }
-    if (!hasUpperCase) {
-      return { passwordInvalid: 'La contraseña debe tener al menos una mayúscula.' };
-    }
-    if (!hasLowerCase) {
-      return { passwordInvalid: 'La contraseña debe tener al menos una minúscula.' };
-    }
-    if (!hasNumeric) {
-      return { passwordInvalid: 'La contraseña debe tener al menos un número.' };
-    }
-    if (!hasSpecialChar) {
-      return { passwordInvalid: 'La contraseña debe tener al menos un carácter especial.' };
-    }
+
   
   return null;
   }

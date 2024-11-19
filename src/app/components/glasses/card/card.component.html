@@ -7,16 +7,16 @@
         <div class="w-full flex flex-col items-center gap-1 text-xs font-light -ml-14">
             <span class="w-full flex justify-between items-center">
                 <p>{{mine?'Precio (COP)':'Beneficio en porcentaje'}}</p>
-                <p>{{price}}</p>
+                <p>{{mine?price:percentage + '%'}}</p>
             </span>
             <span class="w-full flex justify-between items-center">
                 <p>{{mine?'Días de actividad':'Dias restantes'}}</p>
-                {{daysActive}}
+                <p>{{mine?daysActive:daysRemaining}}</p>
             </span>
             <span class="w-full flex justify-between items-center">
                 <p>{{mine?'Artículos máximos':'Beneficio por hora (COP)'}}</p>
                 <span class="inline-flex items-center gap-1">
-                    <p class="">{{maxQuantity}}</p>
+                    <p class="">{{mine?maxQuantity:hourBenefit}}</p>
                 </span>
             </span>
             <span class="w-full flex justify-between items-center">
@@ -33,7 +33,7 @@
             </span>
             @if(mine){
             <div class="w-full flex justify-end mt-3">
-                <button class="w-4/5 flex justify-center text-sm gap-3 items-center bg-blue-900 p-1 rounded-md btn-alt">
+                <button class="w-4/5 flex justify-center text-sm gap-3 items-center bg-blue-900 p-1 rounded-md btn-alt" (click)="buy()">
                     <p>Comprar Ahora</p>
                 </button>
             </div>

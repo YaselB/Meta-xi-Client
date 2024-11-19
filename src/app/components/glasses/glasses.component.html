@@ -15,7 +15,7 @@
             <p class="text-slate-400">Balance Total</p>
         </article>
         <div class="w-1/2 flex justify-end">
-            <button class="bg-black py-1 px-4 rounded-xl text-sm">
+            <button [routerLink]="['/recharge']" class="bg-black py-1 px-4 rounded-xl text-sm">
                 Recargar
             </button>
         </div>
@@ -23,17 +23,17 @@
 </div>
 <div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
     <button (click)="gafasVR()" class="w-1/2 py-3 rounded-xl"
-        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': notMine}">
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': mine}">
         Gafas VR
     </button>
     <button (click)="myGafas()" class="w-1/2 py-3 rounded-xl"
-        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !notMine}">
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !mine}">
         Mis GAFAS
     </button>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 mx-auto pb-20">
     @for (gafas of list; track $index) {
-    <app-card [data]="gafas" [mine]="notMine"/>
+    <app-card [data]="gafas" [mine]="mine" (onBuy)="buyPlan($event)"></app-card>
     }
 </div>

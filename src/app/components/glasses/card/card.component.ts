@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [NgClass],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+  styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
-  @Input() data:any={};
-  @Input() mine:any=false
+export class CardComponent implements OnInit, OnChanges {
+  @Input() data: any;
+  @Input() mine: boolean = false;
+  @Output() onBuy = new EventEmitter<string>();
+
   idPlan: string = '';
   name: string = '';
   price: number = 0;
@@ -17,14 +18,32 @@ export class CardComponent implements OnInit {
   daysActive: number = 0;
   dailyBenefit: number = 0;
   totalBenefit: number = 0;
-
+  daysRemaining: number = 0;
+  hourBenefit: number = 0;
+  percentage: number = 0;
 
   ngOnInit(): void {
-    this.cleanData()
+    this.updateData();
   }
 
-  cleanData(){
-    const {idPlan, name, price , maxQuantity , daysActive , dailyBenefit , totalBenefit} = this.data;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] || changes['mine']) {
+      this.updateData();
+    }
+  }
+
+  updateData(): void {
+    if (this.mine) {
+      this.cleanData();
+      console.log("Datos cuando 'mine' es true", this.data);
+    } else {
+      this.cleanData2();
+      console.log("Datos cuando 'mine' es false", this.data);
+    }
+  }
+
+  cleanData() {
+    const { idPlan, name, price, maxQuantity, daysActive, dailyBenefit, totalBenefit } = this.data;
     this.idPlan = idPlan;
     this.name = name;
     this.price = price;
@@ -34,11 +53,18 @@ export class CardComponent implements OnInit {
     this.totalBenefit = totalBenefit;
   }
 
-  getSrcSet(id: number): string {
-    return `
-      assets/glasses/vr${id}.png 300w,
-      assets/glasses/vr${id}.png 600w,
-      assets/glasses/vr${id}.png 1200w
-    `;
+  cleanData2() {
+    const { idPlan, name, percentage, daysRemaining, hourBenefit, dailyBenefit, totalBenefit } = this.data;
+    this.idPlan = idPlan;
+    this.name = name;
+    this.percentage = percentage;
+    this.daysRemaining = daysRemaining;
+    this.hourBenefit = hourBenefit;
+    this.dailyBenefit = dailyBenefit;
+    this.totalBenefit = totalBenefit;
+  }
+
+  buy() {
+    this.onBuy.emit(this.name);
   }
 }
