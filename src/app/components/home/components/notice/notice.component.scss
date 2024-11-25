@@ -3,10 +3,10 @@
         transform: translateX(100%);
     }
     100% {
-        transform: translateX(-90%); /* Ajusta este valor para crear espacio */
+        transform: translateX(-100%); /* Ajusta este valor para crear espacio */
     }
 }
 
 .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 30s linear infinite;
 }
