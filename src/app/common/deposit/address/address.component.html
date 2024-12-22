@@ -6,7 +6,7 @@
         <p>{{token | uppercase }}</p>
         
         <p *ngIf="token !== 'nequi'" class="text-xs text-red-400">Mínimo {{minimo}} {{currency}}</p>
-        <p *ngIf="token === 'nequi'"class="text-green-400"> {{minimo}} {{currency}}</p>
+        <p *ngIf="token === 'nequi'"class="text-green-400">Recargue , {{minimo}} {{currency}} .</p>
     </head>
     <div class="relative w-full rounded" [ngStyle]="{'border': '1px solid ' + ring}">
         <div *ngIf="token !== 'nequi'" class="bg-black rounded p-1 w-full">{{ link }}</div>
