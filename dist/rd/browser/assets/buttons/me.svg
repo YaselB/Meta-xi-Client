@@ -1,0 +1,6 @@
+<svg viewBox='0 0 24 24' width='1em' height='1em' xmlns='http://www.w3.org/2000/svg'>
+  <g fill='none' stroke='white' stroke-width='1'>
+    <circle cx='12' cy='6' r='4'/>
+    <path stroke-linecap='round' d='M19.998 18c.002-.164.002-.331.002-.5c0-2.485-3.582-4.5-8-4.5s-8 2.015-8 4.5S4 22 12 22c2.231 0 3.84-.157 5-.437'/>
+  </g>
+</svg>
