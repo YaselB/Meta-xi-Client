@@ -1,4 +1,13 @@
-<article class="p-2 sm:p-4 md:p-6">
+
+<article *ngIf="token === 'nequi'" class="p-2 sm:p-4 md:p-6">
+    <p>1. Realice una captura del código QR mostrado anteriormente.</p>
+    <p>2. Abra su app de NEQUI, escane el código QR.</p>
+    <p>3. Coloque el monto de la recarga y realice envío.</p>
+    <p>4. Copie el código de referencia q le brinda la aplicación NEQUI luego de haber realizado el envío.</p>
+    <p>5. Vuelva a IndexVerse, escriba y envié el código de referencia.</p>
+    <p>6. Espere, la recarga puede tardar entre 1 minuto y 6 horas.</p>
+</article>
+<article *ngIf="token !== 'nequi'" class="p-2 sm:p-4 md:p-6">
     <p>1. Copie la dirección anterior o escanee el código QR y seleccione la red {{coin}} (TRC20) para recargar {{coin2}}.</p>
     <p>2. No recargue otros activos que no sean {{coin}}(TRC20)-{{coin}}. Recarga Los fondos llegarán a tu cuenta en
         aproximadamente

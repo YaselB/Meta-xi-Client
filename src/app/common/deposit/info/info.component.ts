@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-info',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './info.component.html',
   styleUrl: './info.component.scss',
 })

@@ -1,31 +1,57 @@
-@if(!isLogined){
-    <nav
-        class="fixed bottom-0 z-50 w-full flex text-sm font-thin leading-none items-center justify-between box-border py-2 px-5 bg-blue-950 rounded-t-[2rem]">
-        <button (click)="changeIcon('home')" [routerLink]="['../home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            class="flex flex-col items-center sm:w-12 w-8">
-            <img src="assets/buttons/home.svg" alt="home" class="w-6">
-            Inicio
-        </button>
-        <button (click)="changeIcon('article')" [routerLink]="['../tasks']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            class="flex flex-col items-center sm:w-12 w-8 p-0 m-0 ">
-            <img [src]="articleIcon" alt="articulos" class="w-10 h-10 p-0 m-0 -mt-2">
-            <p class="-mt-2">Artìculos</p>
-        </button>
-        <button (click)="changeIcon('team')" [routerLink]="['../team']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            class="flex flex-col items-center sm:w-12 w-8">
-            <img src="assets/buttons/team.svg" alt="team" class="w-6">
-            Referidos
-        </button>
-        <button (click)="changeIcon('vip')" [routerLink]="['../vip']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            class="flex flex-col items-center sm:w-12 w-8">
-            <img src="assets/buttons/task.svg" alt="vip" class="w-6">
-            Misiones
-        </button>
-        <button (click)="changeIcon('me')" [routerLink]="['../me']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-            class="flex flex-col items-center sm:w-12 w-8">
-            <img src="assets/buttons/me.svg" alt="me" class="w-6">
-            Yo
-        </button>
-    </nav>
-    }
-    
+<nav class="fixed bottom-0 z-50 w-full flex text-sm font-thin leading-none items-center justify-between box-border py-2 px-5 bg-blue-950 rounded-t-[2rem]">
+    <!-- Botón de Inicio -->
+    <button
+      (click)="changeIcon('home')"
+      [routerLink]="['../home']"
+      routerLinkActive="active-home"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex flex-col items-center sm:w-12 w-8">
+      <img [src]="homeIcon" alt="home" class="w-6">
+      Inicio
+    </button>
+  
+    <!-- Botón de Artículos -->
+    <button
+      (click)="changeIcon('article')"
+      [routerLink]="['../tasks']"
+      routerLinkActive="active-article"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex flex-col items-center sm:w-12 w-8 p-0 m-0">
+      <img [src]="articleIcon" alt="articulos" class="w-10 h-10 p-0 m-0 -mt-2">
+      <p class="text-white">Artículos</p>
+    </button>
+  
+    <!-- Botón de Referidos -->
+    <button
+      (click)="changeIcon('team')"
+      [routerLink]="['../team']"
+      routerLinkActive="active-team"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex flex-col items-center sm:w-12 w-8">
+      <img [src]="teamIcon" alt="team" class="w-6">
+      Referidos
+    </button>
+  
+    <!-- Botón de Misiones -->
+    <button
+      (click)="changeIcon('vip')"
+      [routerLink]="['../vip']"
+      routerLinkActive="active-vip"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex flex-col items-center sm:w-12 w-8">
+      <img [src]="vipIcon" alt="vip" class="w-6">
+      Misiones
+    </button>
+  
+    <!-- Botón de Yo -->
+    <button
+      (click)="changeIcon('me')"
+      [routerLink]="['../me']"
+      routerLinkActive="active-me"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex flex-col items-center sm:w-12 w-8">
+      <img [src]="meIcon" alt="me" class="w-6">
+      Yo
+    </button>
+  </nav>
+  

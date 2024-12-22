@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,9 @@ export class TelegramService {
   chatid = "1425847313";
   private telegramApiUrl = `https://api.telegram.org/bot${this.botToken}`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private notificationService: NotificationService
+  ) { }
 
   sendPhotoToChannel(photo: File, caption: string ): void {
     const formData = new FormData();
@@ -28,9 +31,17 @@ export class TelegramService {
       text: message,
     }
     this.http.post(`${this.telegramApiUrl}/sendMessage`, payload).subscribe({
-      next: (response)=> console.log('Message sent succesfully', response),
-      error: (err)=> console.error('Error sending message', err),
-    })
+      next: (response) => {
+        console.log('Message sent successfully', response);
+        this.notificationService.correct('Mensaje enviado correctamente');
+      },
+      error: (err) => {
+        console.error('Error sending message', err);
+        this.notificationService.errorMessage(
+          'Error al enviar el mensaje. Inténtalo nuevamente.'
+        );
+      },
+    });
   }
 }
 

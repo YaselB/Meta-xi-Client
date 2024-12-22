@@ -1,12 +1,23 @@
 <section class="w-full">
     <app-back-home />
-    <section class="w-full flex flex-col gap-2 md:gap-4 pb-10">
-        <div class="w-full flex flex-col sm:flex-row sm:justify-between gap-2 py-2">
-            <app-qr [token]="'qr1'" class="sm:w-1/2 w-full" />
-            <app-address [token]='token' class="sm:w-1/2"></app-address>
+    <section class="w-full flex flex-col gap-4 pb-10">
+        <!-- Contenedor del QR y Address -->
+        <div class="w-full flex flex-col sm:flex-row gap-4 py-4">
+            <!-- Componente QR -->
+            <app-qr 
+                [token]="'qr1'" 
+                class="w-full sm:w-[300px] sm:h-[300px] md:w-1/2 lg:w-3/4 h-auto mx-auto" 
+            />
+            <!-- Componente Address -->
+            <app-address 
+                [token]='token' 
+                class="w-full sm:w-1/2 mt-4 sm:mt-0"
+            ></app-address>
         </div>
-        <div class="bg-blue-950 p-2 sm:p-4 md:p-6 rounded">
+        <!-- Información adicional -->
+        <div class="bg-blue-950 p-4 sm:p-6 md:p-8 rounded">
             <app-info [token]='token' />
         </div>
     </section>
 </section>
+
