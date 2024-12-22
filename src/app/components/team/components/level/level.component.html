@@ -11,14 +11,14 @@
             </span>
             <span class="flex flex-col items-center gap-1">
                 <p class="text-xs">Porcentaje de comisión</p>
-                10%
+                8%
             </span>
             <span class="flex flex-col items-center gap-1">
                 <p class="text-xs">Ingresos totales</p>
                 {{lvl1.totalIncome}}
             </span>
         </article>
-        <button [routerLink]="['/lvl',1]"
+        <button [routerLink]="['/lvl',1]" [queryParams]="{ ingreso: lvl1.totalIncome}"
             class="w-full btn-grad rounded-xl text-xs py-1 px-2">Detalles</button>
     </section>
     <section class="w-full lvl1-grad flex flex-col items-center gap-2 p-2.5 rounded-lg">
@@ -40,7 +40,7 @@
                 {{lvl2.totalIncome}}
             </span>
         </article>
-        <button [routerLink]="['/lvl',2]"
+        <button [routerLink]="['/lvl',2]" [queryParams]="{ ingreso: lvl2.totalIncome}"
             class="w-full btn-grad rounded-xl text-xs py-1 px-2">Detalles</button>
     </section>
     <section class="w-full lvl2-grad flex flex-col items-center gap-2 p-2.5 rounded-lg">
@@ -62,7 +62,7 @@
                 {{lvl3.totalIncome}}
             </span>
         </article>
-        <button [routerLink]="['/lvl',3]"
+        <button [routerLink]="['/lvl',3]" [queryParams]="{ ingreso: lvl3.totalIncome}"
             class="w-full btn-grad rounded-xl text-xs py-1 px-2">Detalles</button>
     </section>
 </div>

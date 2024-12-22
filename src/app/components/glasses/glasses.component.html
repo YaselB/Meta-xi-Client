@@ -22,11 +22,11 @@
     </div>
 </div>
 <div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
-    <button (click)="gafasVR()" class="w-1/2 py-3 rounded-xl"
+    <button (click)="gafasVR()" class="w-1/2 py-3 rounded-xl transition-opacity duration-200 easy-in-out hover:opacity-80"
         [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': mine}">
         Gafas VR
     </button>
-    <button (click)="myGafas()" class="w-1/2 py-3 rounded-xl"
+    <button (click)="myGafas()" class="w-1/2 py-3 rounded-xl transition-opacity duration-200 easy-in-out hover:opacity-80"
         [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !mine}">
         Mis GAFAS
     </button>

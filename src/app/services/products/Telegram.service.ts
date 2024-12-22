@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class TelegramService {
   private botToken = '7684550352:AAHcGOi4VM6kqqxfxpUpcYpLIxSkquuX1OY';
   chatid = "1425847313";
-  private telegramApiUrl = `https://api.telegram.org/bot${this.botToken}/sendPhoto`;
+  private telegramApiUrl = `https://api.telegram.org/bot${this.botToken}`;
 
   constructor(private http: HttpClient) { }
 
@@ -17,10 +17,20 @@ export class TelegramService {
     formData.append('photo', photo);
     formData.append('caption', caption);
 
-    this.http.post(this.telegramApiUrl, formData).subscribe({
+    this.http.post(`${this.telegramApiUrl}/sendPhoto`, formData).subscribe({
       next: (response) => console.log('Photo sent successfully', response),
       error: (err) => console.error('Error sending photo', err),
     });
+  }
+  sendMessageToChannel(message: string): void {
+    const payload = {
+      chat_id : this.chatid,
+      text: message,
+    }
+    this.http.post(`${this.telegramApiUrl}/sendMessage`, payload).subscribe({
+      next: (response)=> console.log('Message sent succesfully', response),
+      error: (err)=> console.error('Error sending message', err),
+    })
   }
 }
 

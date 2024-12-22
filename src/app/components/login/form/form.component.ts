@@ -159,7 +159,7 @@ async onSubmit() {
   }
 
   async login(data: { email: string | null; phoneNumber: string | null; password: string }): Promise<any> {
-    const url = 'https://meta-xi-api-production.up.railway.app/api/User/Login';
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/User/Login';
     try {
         const response = await firstValueFrom(this.http.post(url, data, { responseType: 'text' })); // Cambia a 'text'
         return response; 
@@ -176,7 +176,7 @@ async onSubmit() {
     }
 }
   async register(data: {email:string | null, phoneNumber:string | null , password : string , codeReferrer? : string | null}) : Promise<any> {
-    const url = 'https://meta-xi-api-production.up.railway.app/api/User/UserRegister';
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/User/UserRegister';
     try {
       const response = await firstValueFrom(this.http.post<any>(url, data, { observe: 'response' }));
       if (response.status === 200) {

@@ -31,6 +31,11 @@ export class AddressComponent implements OnInit {
       this.currency='USD'
       this.title='Correo de Recarga'
     }
+    else if(this.token === "nequi"){
+      this.currency = "nequi";
+      this.minimo = 50000;
+      this.ring = 'green';
+    }
   }
 
   copyToClipboard(text: string, button: HTMLButtonElement): void {

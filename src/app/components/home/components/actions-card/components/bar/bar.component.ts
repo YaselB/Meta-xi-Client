@@ -31,7 +31,7 @@ export class BarComponent {
     
   }
   async CallToApiForGetBalance(username: string) :Promise<any>{
-    const url = 'https://meta-xi-api-production.up.railway.app/api/Wallet/GetBalance/'+username;
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/Wallet/GetBalance/'+username;
     try {
       const response = await firstValueFrom(this.http.get(url));
       console.log(response);

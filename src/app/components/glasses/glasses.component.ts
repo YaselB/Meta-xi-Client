@@ -60,7 +60,7 @@ export class TasksComponent implements OnInit {
     }
   }
   async GetMyPlans() : Promise<any>{
-    const url = 'https://meta-xi-api-production.up.railway.app/api/UserPlans/GetUserPlans/'+ this.username;
+    const url = 'http://localhost:5071/api/UserPlans/GetUserPlans/'+ this.username;
     try {
       const response = await firstValueFrom(this.http.get(url));
       console.log(response);
@@ -78,7 +78,7 @@ export class TasksComponent implements OnInit {
     }
   }
   async GetPlans() : Promise<any>{
-    const url = 'https://meta-xi-api-production.up.railway.app/api/Plans/Plans/'+ this.username;
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/Plans/Plans/'+ this.username;
     try {
       const response = await firstValueFrom(this.http.get(url));
       console.log(response);
@@ -96,7 +96,7 @@ export class TasksComponent implements OnInit {
     }
   }
   async buyPlan(name: string): Promise<void> {
-    const url = 'https://meta-xi-api-production.up.railway.app/api/UserPlans/UserBuyPlans';
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/UserPlans/UserBuyPlans';
     const body = {
       idPlan: name,
       username: this.username
@@ -114,7 +114,7 @@ export class TasksComponent implements OnInit {
     }
   }
   async GetBenefitsToServer(name: string): Promise<any>{
-    const url = 'https://meta-xi-api-production.up.railway.app/api/UserPlans/GetBalaceToUser/'+ this.username;
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/UserPlans/GetBalaceToUser/'+ this.username;
     try {
       const response = await firstValueFrom(this.http.get(url));
       return response;

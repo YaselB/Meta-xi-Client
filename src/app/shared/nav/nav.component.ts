@@ -1,11 +1,11 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass ,CommonModule],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss',
 })
@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
   isMeRoute = false;
   isScrolled = false;
   isLogined = false;
+
 
   private router = inject(Router);
 
@@ -30,4 +31,5 @@ export class NavComponent implements OnInit {
   onWindowScroll() {
     this.isScrolled = window.pageYOffset > 0;
   }
+
 }

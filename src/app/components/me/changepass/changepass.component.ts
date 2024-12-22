@@ -63,25 +63,9 @@ export class ChangepassComponent implements OnInit {
 
   PasswordValidator(control: AbstractControl): { [key: string]: string } | null {
     const password = control.value;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumeric = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     const isValidLength = password && password.length >= 6;
     if (!isValidLength) {
       return { passwordInvalid: 'La contraseña debe tener al menos 6 caracteres.' };
-    }
-    if (!hasUpperCase) {
-      return { passwordInvalid: 'La contraseña debe tener al menos una mayúscula.' };
-    }
-    if (!hasLowerCase) {
-      return { passwordInvalid: 'La contraseña debe tener al menos una minúscula.' };
-    }
-    if (!hasNumeric) {
-      return { passwordInvalid: 'La contraseña debe tener al menos un número.' };
-    }
-    if (!hasSpecialChar) {
-      return { passwordInvalid: 'La contraseña debe tener al menos un carácter especial.' };
     }
   return null;
   }
@@ -104,7 +88,7 @@ export class ChangepassComponent implements OnInit {
     }
   }
   async ChangePassword(data: { Username: string; OldPassword: string; NewPassword: string; }): Promise<any> {
-    const url = 'https://meta-xi-api-production.up.railway.app/api/User/UpdatePassword';
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/User/UpdatePassword';
     try {
         const response = await firstValueFrom(this.http.patch<any>(url, data, { observe: 'response' }));
         if (response.status === 200) {

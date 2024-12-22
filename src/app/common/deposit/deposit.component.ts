@@ -20,4 +20,5 @@ import { NequiComponent } from './nequi/nequi.component';
 })
 export class DepositComponent {
   @Input('token') token: string = '';
+  
 }

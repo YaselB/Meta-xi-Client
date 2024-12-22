@@ -14,7 +14,6 @@ const components = [
   CarouselComponent,
   ActionsCardComponent,
   CompanyComponent,
-  TimeComponent,
   SliderComponent,
   ActivityComponent,
   MemberlistComponent,
