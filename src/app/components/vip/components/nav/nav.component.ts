@@ -1,20 +1,12 @@
-<<<<<<< HEAD
+import { CommonModule, NgClass } from '@angular/common'; // Import CommonModule
 
-import { CommonModule } from '@angular/common';
-=======
-import { NgClass, CommonModule } from '@angular/common'; // Import CommonModule
->>>>>>> 3a0e3cff309dc5421096bce8c2d59a2c5179ebb9
 import { Component, OnInit } from '@angular/core';
-import { missions } from './utils/data';
+
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-<<<<<<< HEAD
-  imports: [CommonModule],
-=======
   imports: [CommonModule, NgClass], // Add CommonModule here
->>>>>>> 3a0e3cff309dc5421096bce8c2d59a2c5179ebb9
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss',
 })
@@ -23,7 +15,6 @@ export class NavComponent implements OnInit {
   misiones = false;
   tendences = false;
   finalize = false;
-<<<<<<< HEAD
 
    missions = [
     { id: 1, title: 'Invite 3 amigos', goal: 3, progress: 0, claimed: false, reward: 2500 },
@@ -54,10 +45,7 @@ export class NavComponent implements OnInit {
     { id: 8, title: 'Invite un amigo a recargar al menos 500Mil COP', goal: 1, progress: 0, claimed: false, reward: 50000 },
   ];
   
-=======
-  missions = missions;
-  filteredMissions = missions; // Para almacenar las misiones filtradas
->>>>>>> 3a0e3cff309dc5421096bce8c2d59a2c5179ebb9
+
 
   ngOnInit(): void {
     this.getMisiones(); // Inicialmente se muestran todas las misiones
@@ -66,21 +54,18 @@ export class NavComponent implements OnInit {
   getMisiones() {
     this.misiones = true;
     this.tendences = false;
-    this.finalize = false;
-    this.filteredMissions = this.missions; // Muestra todas las misiones
+    this.finalize = false;// Muestra todas las misiones
   }
 
   getTendencia() {
     this.tendences = true;
     this.misiones = false;
-    this.finalize = false;
-    this.filteredMissions = this.missions.filter(mission => mission.status === 'trending'); // Filtra misiones en tendencia
+    this.finalize = false;// Filtra misiones en tendencia
   }
 
   getTerminadas() {
     this.finalize = true;
     this.tendences = false;
-    this.misiones = false;
-    this.filteredMissions = this.missions.filter(mission => mission.status === 'completed'); // Filtra misiones completadas
+    this.misiones = false;// Filtra misiones completadas
   }
 }

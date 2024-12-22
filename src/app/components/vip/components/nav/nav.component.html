@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-<div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
-    <button (click)="getMisiones()" class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2">
-        <span>Misiones</span>
-=======
+
 <div class="flex items-center bg-blue-950 mt-7 rounded-xl">
     <button (click)="getMisiones()" class="w-1/2 py-3 rounded-xl"
         [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': misiones}">
         Misiones
->>>>>>> 3a0e3cff309dc5421096bce8c2d59a2c5179ebb9
+
     </button>
     <button (click)="getTendencia()" class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2 relative">
         <span>En tendencia</span>
@@ -76,21 +72,4 @@
     </ng-container>
 </div>
 
-=======
-<!-- envoltura de misiones con scroll -->
-<div class="mt-5 h-64"> <!-- Ajusta la altura según sea necesario -->
-    <div class="space-y-3">
-        <div *ngFor="let mission of filteredMissions" class="bg-blue-950 p-4 rounded-xl shadow-xl">
-            <h3 class="flex text-md text-white justify-start items-center">{{ mission.title }}</h3>
-            <div class="flex">
-                <img src="assets/icons/mision.webp" alt="Mision" class="w-8 h-8 justify-center items-center">
-                <p class="text-sm text-gray-200 ml-5 flex items-center">{{ mission.description }}</p>
-                <span class="text-blue-300 ml-2 flex items-center">${{ mission.reward }}</span>
-                <div class="flex flex-1 justify-end items-end">
-                    <span class="border-2 border-dotted pl-2 pr-2 p-1 rounded-xl">0/1</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
->>>>>>> 3a0e3cff309dc5421096bce8c2d59a2c5179ebb9
+
