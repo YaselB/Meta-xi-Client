@@ -1,4 +1,4 @@
-# Etapa de construcción de la aplicación Angular
+# Usar una imagen base de Node.js
 FROM node:20.10.0 as build
 
 # Directorio de trabajo
@@ -11,22 +11,19 @@ COPY package*.json ./
 RUN npm install
 
 # Copiar el resto de los archivos de la aplicación
-COPY . .
+COPY . ./
 
 # Construir la aplicación para producción
-RUN npm run build -- --output-path=dist/rd --configuration production
+RUN npm run build -- --prod
 
-# Etapa de Nginx
-FROM nginx:stable-alpine
+# Usar un servidor estático para servir los archivos
+FROM node:20.10.0
 
-# Copiar la configuración de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Instalar http-server
+RUN npm install -g http-server
 
-# Copiar los archivos construidos desde la etapa anterior
-COPY --from=build /app/dist/rd /usr/share/nginx/html
+# Exponer el puerto
+EXPOSE 8080
 
-# Exponer el puerto 80 para que Nginx pueda servir la aplicación
-EXPOSE 80
-
-# Comando para ejecutar Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Comando para servir la aplicación
+CMD ["http-server", "dist/tu-app-angular", "-p", "8080"]
