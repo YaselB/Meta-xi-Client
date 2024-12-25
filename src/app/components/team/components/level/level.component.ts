@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-level',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './level.component.html',
   styleUrl: './level.component.scss',
 })
