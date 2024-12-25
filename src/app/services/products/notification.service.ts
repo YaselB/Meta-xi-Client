@@ -31,4 +31,25 @@ export class NotificationService {
             progressAnimation: 'increasing', 
         })
     }
+    showCustomMessage(message: string, bgColor: string) {
+        this.toastr.show(message, '', {
+          timeOut: 3000,
+          closeButton: true,
+          toastClass: 'ngx-toastr custom-toastr', // Clase personalizada
+          positionClass: 'toast-top-center', // Posición en la parte superior
+        });
+    
+        // Agrega estilos dinámicos para el color de fondo
+        const styles = `
+          .custom-toastr {
+            background-color: ${bgColor} !important;
+            color: white !important;
+            font-weight: bold;
+          }
+        `;
+        const styleSheet = document.createElement('style');
+        styleSheet.type = 'text/css';
+        styleSheet.innerText = styles;
+        document.head.appendChild(styleSheet);
+      }
 }

@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-qr',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './qr.component.html',
   styleUrl: './qr.component.scss',
 })

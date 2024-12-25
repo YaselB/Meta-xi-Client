@@ -1,7 +1,8 @@
+/* Estilo general de la imagen */
 .login_img_section {
-    background: linear-gradient(rgba(2, 2, 2, 0.568),rgba(0, 0, 0, 0.418)),url("/assets/others/login.jpg") center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-bottom: 60px; /* Ajusta según lo que necesites */
-  
-  }
+  background: linear-gradient(rgba(2, 2, 2, 0.568), rgba(0, 0, 0, 0.418)),
+      url("/assets/others/login.jpg") center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+

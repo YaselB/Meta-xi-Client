@@ -1,32 +1,31 @@
 <div class="fixed top-0 left-0 w-screen h-screen flex flex-col sm:flex-row">
-    <div class="flex w-screen md:w-1/2 h-1/3 sm:h-auto login_img_section ">
-        <img src="assets/others/login.jpg" alt="avatar" class="sm:hidden w-full ">
+    <!-- Sección de Imagen -->
+    <div class="flex w-screen md:w-1/2 h-1/3 sm:h-auto login_img_section">
+        <img src="assets/others/login.jpg" alt="avatar" class="sm:hidden w-full">
     </div>
+
+    <!-- Sección del Formulario -->
     <div class="flex w-full sm:w-1/2 h-2/3 sm:h-auto justify-center items-center relative bg-[#3E183D]">
         <div class="w-full h-full px-3 sm:p-5 flex flex-col gap-5">
             <!-- Botones de Alternativa de Inicio de Sesión -->
             <div class="flex items-center bg-blue-950 mt-7 rounded-xl shadow-xl">
                 <button (click)="email()" class="w-1/2 sm:p-4 p-2 rounded-xl text-center"
-                        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': btnC}">
+                    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': btnC}">
                     {{isRegistered ? 'Iniciar sesión por correo electrónico' : 'Registrarse por correo electrónico'}}
                 </button>
                 <button (click)="telf()" class="w-1/2 h-full sm:p-4 p-2 rounded-xl text-center"
-                        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !btnC}">
+                    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !btnC}">
                     {{isRegistered ? 'Iniciar sesión por teléfono' : 'Registrarse por teléfono'}}
                 </button>
             </div>
-    
-            <!-- Contenedor del formulario con scroll -->
-            <div class="overflow-y-auto h-[calc(100vh-250px)] sm:h-[calc(100vh-300px)] flex flex-col gap-5"> <!-- Se ajusta dinámicamente -->
-                <app-form [typeLogin]="typeAuth" [isRegistered]="isRegistered"/>
-    
-                <!-- Enlace de Alternativa de Registro/Iniciar Sesión -->
-                <a (click)="goLogin()" class="text-center underline mt-5">
+
+            
+            <div class="overflow-y-auto h-[calc(100vh-350px)] sm:h-[calc(100vh-300px)] flex flex-col gap-5 px-3">
+                <app-form [typeLogin]="typeAuth" [isRegistered]="isRegistered"></app-form>
+                <a (click)="goLogin()" class="text-center underline mt-5 block">
                     {{isRegistered ? '¿No tienes una cuenta? Regístrate' : '¿Ya tienes una cuenta? Inicia sesión'}}
                 </a>
             </div>
         </div>
     </div>
-    
-    
 </div>

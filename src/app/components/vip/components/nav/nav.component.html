@@ -1,9 +1,6 @@
 <div class="flex items-center bg-blue-950 mt-7 rounded-xl">
     <button (click)="getMisiones()" class="w-1/2 py-3 rounded-xl"
-        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': misiones}">
-        Misiones
-
-    </button>
+        [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': misiones}">Misiones</button>
     <button (click)="getTendencia()" class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2 relative">
         <span>En tendencia</span>
         <div class="fire">
@@ -15,25 +12,28 @@
     </button>
 </div>
 
+<!-- Misiones -->
 <div *ngIf="misiones" class="flex flex-col p-6 gap-4 pb-20">
     <ng-container *ngFor="let i of missions">
-        <div class="w-full p-4 rounded-lg bg-blue-950 flex items-center justify-between text-white">
-            <!-- Título de la misión a la izquierda -->
-            <h3 class="font-bold sm:w-3/4">{{i.title}}</h3>
-
-            <!-- Contenedor para la recompensa centrado -->
-            <div class="text-white absolute left-1/2 transform -translate-x-1/2">
-                <strong>Recompensa: {{i.reward}} COP</strong>
+        <div class="w-full p-4 rounded-lg bg-blue-950 flex flex-col md:flex-row items-start md:items-center justify-between text-white">
+            <!-- Contenedor para el título y la recompensa -->
+            <div class="w-full md:w-3/4 flex flex-col">
+                <!-- Título -->
+                <h3 class="font-bold">{{i.title}}</h3>
+                <!-- Recompensa -->
+                <div class="mt-2 md:mt-0 text-left md:text-center md:order-2 md:pl-8 ml-0 md:ml-[200px]">
+                    <strong>Recompensa: {{i.reward}} COP</strong>
+                </div>
             </div>
 
-            <!-- Botón al final -->
-            <button class="w-1/4 py-3 rounded-lg font-semibold bg-green-500 disabled:bg-gray-500 relative"
+            <!-- Botón siempre a la derecha -->
+            <button class="w-full md:w-1/4 py-3 mt-2 md:mt-0 rounded-lg font-semibold bg-green-500 disabled:bg-gray-500 relative"
                 [disabled]="i.progress < i.goal || i.claimed"
                 [ngClass]="{'opacity-50': i.progress < i.goal || i.claimed, 'bg-gray-500': i.progress < i.goal || i.claimed}">
                 <div *ngIf="i.progress < i.goal && !i.claimed"
-                class="absolute top-0 left-0 h-full bg-green-500 transition-all duration-300"
-                [style.width.%]="(i.progress/i.goal) * 100"
-                style="z-index: 0;">  
+                    class="absolute top-0 left-0 h-full bg-green-500 transition-all duration-300"
+                    [style.width.%]="(i.progress/i.goal) * 100"
+                    style="z-index: 0;">
                 </div>
                 <span class="relative z-10" *ngIf="i.progress < i.goal && !i.claimed">Progreso : {{i.progress}}/{{i.goal}}</span>
                 <span class="relative z-10" *ngIf="!i.claimed && i.progress === i.goal">Reclamar</span>
@@ -42,25 +42,29 @@
         </div>
     </ng-container>
 </div>
+
+<!-- Tendencias -->
 <div *ngIf="tendences" class="flex flex-col p-6 gap-4 pb-20">
     <ng-container *ngFor="let i of tendency">
-        <div class="w-full p-4 rounded-lg bg-blue-950 flex items-center justify-between text-white">
-            <!-- Título de la misión a la izquierda -->
-            <h3 class="font-bold sm:w-3/4">{{i.title}}</h3>
-
-            <!-- Contenedor para la recompensa centrado -->
-            <div class="text-white absolute left-1/2 transform -translate-x-1/2">
-                <strong>Recompensa: {{i.reward}} COP</strong>
+        <div class="w-full p-4 rounded-lg bg-blue-950 flex flex-col md:flex-row items-start md:items-center justify-between text-white">
+            <!-- Contenedor para el título y la recompensa -->
+            <div class="w-full md:w-3/4 flex flex-col">
+                <!-- Título -->
+                <h3 class="font-bold">{{i.title}}</h3>
+                <!-- Recompensa -->
+                <div class="mt-2 md:mt-0 text-left md:text-center md:order-2 md:pl-8 ml-0 md:ml-[350px]">
+                    <strong>Recompensa: {{i.reward}} COP</strong>
+                </div>
             </div>
 
-            <!-- Botón al final -->
-            <button class="w-1/4 py-3 rounded-lg font-semibold bg-green-500 disabled:bg-gray-500 relative"
+            <!-- Botón siempre a la derecha -->
+            <button class="w-full md:w-1/4 py-3 mt-2 md:mt-0 rounded-lg font-semibold bg-green-500 disabled:bg-gray-500 relative"
                 [disabled]="i.progress < i.goal || i.claimed"
                 [ngClass]="{'opacity-50': i.progress < i.goal || i.claimed, 'bg-gray-500': i.progress < i.goal || i.claimed}">
                 <div *ngIf="i.progress < i.goal && !i.claimed"
-                class="absolute top-0 left-0 h-full bg-green-500 transition-all duration-300"
-                [style.width.%]="(i.progress/i.goal) * 100"
-                style="z-index: 0;">  
+                    class="absolute top-0 left-0 h-full bg-green-500 transition-all duration-300"
+                    [style.width.%]="(i.progress/i.goal) * 100"
+                    style="z-index: 0;">
                 </div>
                 <span class="relative z-10" *ngIf="i.progress < i.goal && !i.claimed">Progreso : {{i.progress}}/{{i.goal}}</span>
                 <span class="relative z-10" *ngIf="!i.claimed && i.progress === i.goal">Reclamar</span>
@@ -69,5 +73,6 @@
         </div>
     </ng-container>
 </div>
+
 
 

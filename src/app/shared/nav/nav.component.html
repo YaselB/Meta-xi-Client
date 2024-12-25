@@ -7,9 +7,23 @@
             <img src="assets/icons/metabox.png" alt="nequi" class="w-7 rounded-full">
             <p>IndexVerse</p>
         </div>
-        <div class="flex items-center bg-[#0E2954] rounded-full gap-2 px-3 py-1 text-sm btn-alt">
-            <img src="assets/icons/BonodeBienvenida.png" alt="dailyquest" class="w-4 -mt-1 icono">
+        <button (click)="toggleModal()" class="flex items-center bg-[#0E2954] rounded-full gap-2 px-3 py-1 text-sm btn-alt">
+            <img [src]="address" alt="dailyquest" class="w-4 -mt-1 icono">
             <p>Bono de bienvenida</p>
-        </div>
+        </button>
     </nav>
+    
+    <!-- Modal -->
+    <div *ngIf="showModal" class="fixed inset-0 z-30 flex items-center justify-center bg-black/75">
+        <!-- Ventana emergente -->
+        <div class="relative bg-transparent ackdrop-blur-sm rounded-lg shadow-lg p-5 w-96 flex flex-col items-center gap-4">
+            <!-- Imagen -->
+            <img src="assets/new/1.png" alt="Modal Content" class="rounded-lg w-full object-cover">
+            
+            <!-- Botón de continuar -->
+            <button (click)="GetBonus()" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-lg shadow-md mt-[-20px]">
+                Continuar
+            </button>
+        </div>
+    </div>
 }

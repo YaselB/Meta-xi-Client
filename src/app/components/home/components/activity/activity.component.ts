@@ -12,14 +12,17 @@ export class ActivityComponent {
   private router=inject(Router);
 
   client(){
-    window.open('https://t.me/MetaBox2208', '_blank');
+    window.open('https://t.me/xll2208 ', '_blank');
   }
 
   support(){
-    window.open('https://t.me/MetaBox_Chat', '_blank');
+    window.open('https://t.me/IndexVerse', '_blank');
   }
 
   youtube(){
-    window.open('https://www.youtube.com/@MetaBox-l4l', '_blank');
+    window.open('https://www.youtube.com/@IndexVerseVR', '_blank');
+  }
+  canal(){
+    window.open('https://t.me/IndexVerseVR', '_blank');
   }
 }
