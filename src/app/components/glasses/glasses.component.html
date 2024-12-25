@@ -35,7 +35,13 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 mx-auto pb-20">
     <ng-container *ngFor="let gafa of list;">
       <app-card 
-        *ngIf="gafa.maxQuantity > 0"
+        *ngIf="gafa.maxQuantity > 0 && gafa.daysActive > 0"
+        [data]="gafa" 
+        [mine]="mine" 
+        (onBuy)="buyPlan($event)">
+      </app-card>
+      <app-card 
+        *ngIf="!mine"
         [data]="gafa" 
         [mine]="mine" 
         (onBuy)="buyPlan($event)">
