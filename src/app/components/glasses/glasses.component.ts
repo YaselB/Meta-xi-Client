@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { CardComponent } from './card/card.component';
 import { firstValueFrom } from 'rxjs';
@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [NgClass, CardComponent , HttpClientModule , RouterLink],
+  imports: [NgClass, CardComponent , HttpClientModule , RouterLink ,CommonModule],
   templateUrl: './glasses.component.html',
 })
 export class TasksComponent implements OnInit {

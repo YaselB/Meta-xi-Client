@@ -33,7 +33,13 @@
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 mx-auto pb-20">
-    @for (gafas of list; track $index) {
-    <app-card *ngIf="gafas.mmaxQuantity > 0" [data]="gafas" [mine]="mine" (onBuy)="buyPlan($event)"></app-card>
-    }
-</div>
+    <ng-container *ngFor="let gafa of list;">
+      <app-card 
+        *ngIf="gafa.maxQuantity > 0"
+        [data]="gafa" 
+        [mine]="mine" 
+        (onBuy)="buyPlan($event)">
+      </app-card>
+    </ng-container>
+  </div>
+  
