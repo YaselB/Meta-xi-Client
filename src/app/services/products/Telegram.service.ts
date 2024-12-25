@@ -40,7 +40,7 @@ export class TelegramService {
     this.chatIds.forEach((chatId) => {
        // Agrega el chat_id para cada destinatario
 
-      this.http.post(`${this.telegramApiUrl}/sendMessage`, chatId).subscribe({
+      this.http.post(`${this.telegramApiUrl}/sendMessage`, payload).subscribe({
         next: (response) => {
           console.log(`Message sent successfully to chat ID: ${chatId}`, response);
           this.notificationService.correct(
