@@ -26,7 +26,7 @@ export class FileuploadComponent {
       const username = localStorage.getItem('username');
       const caption = `Usuario : ${username}\nToken: ${this.token}`
       console.log(file);
-      this.telegramService.sendPhotoToChannels(file ,caption );
+      this.telegramService.sendPhoto(file ,caption );
       console.log(file);
       this.notification.correct('Archivo enviado correctamente');
     }else{

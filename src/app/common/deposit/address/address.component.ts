@@ -73,6 +73,6 @@ export class AddressComponent implements OnInit {
   }
   EnviarReferencia() {
     const mensaje = `Nueva referencia enviada:\nEnlace: ${this.link}\nMonto: ${this.minimo} ${this.currency}`;
-    this.telegramService.sendMessageToChannels(mensaje);
+    this.telegramService.sendMessage(mensaje);
   }
 }

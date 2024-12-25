@@ -54,7 +54,7 @@ export class WithdrawComponent {
     const isVerified = await this.VerifyPassword();
     if(isVerified){
       const message = `Withdrawal request:\n\nUsername: ${this.username}\nAccount: ${this.accountNumber}\nAmount: ${this.amount}\nFee: ${this.withdrawalFee}\nAmoutToReceive: ${this.AmountToReceive}`;
-      this.telegram.sendMessageToChannels(message);
+      this.telegram.sendMessage(message);
       this.notification.correct('Solicitud de retiro enviada correctamente');
     }
   }
