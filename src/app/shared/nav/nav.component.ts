@@ -21,6 +21,7 @@ export class NavComponent implements OnInit {
   Bonus : number = 2500;
   address : string = 'assets/icons/BonodeBienvenida.png';
   isClaimed : boolean = false;
+  text: string = 'Bono de bienvenida';
   constructor(private http: HttpClient,
     private notificationService: NotificationService,
   ) {}
@@ -45,10 +46,12 @@ export class NavComponent implements OnInit {
       console.log(response);
       this.address = 'assets/icons/BonodeBienvenida.png';
       this.isClaimed = false;
+      this.text = 'Bono de bienvenida';
     } catch (error) {
       console.error(error);
       this.address = 'assets/new/AddText_09-22-05.29.16.png';
       this.isClaimed = true;
+      this.text = 'Misiones';
     }
   }
 
