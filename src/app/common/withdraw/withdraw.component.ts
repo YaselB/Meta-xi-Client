@@ -1,20 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { BackHomeComponent } from '../../shared/back-home/back-home.component';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../../services/products/notification.service';
 import { TelegramService } from '../../services/products/Telegram.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-withdraw',
   standalone: true,
-  imports: [BackHomeComponent , FormsModule],
+  imports: [BackHomeComponent , FormsModule ,CommonModule],
   templateUrl: './withdraw.component.html',
   styleUrl: './withdraw.component.scss',
 })
 export class WithdrawComponent {
+  @Input('token') token: string = '';
   balance = '0.00';
   username : string = localStorage.getItem('username') || '';
   amount : number | null = null;
@@ -30,7 +31,7 @@ export class WithdrawComponent {
     this.GetBalance();
   }
   async GetBalance(){
-    const url = 'http://localhost:5071/api/Wallet/GetBalance/'+this.username;
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/Wallet/GetBalance/'+this.username;
     try {
       const response : any = await firstValueFrom(this.http.get(url));
       console.log(response);
@@ -53,7 +54,7 @@ export class WithdrawComponent {
   async RequestWithdrawal(){
     const isVerified = await this.VerifyPassword();
     if(isVerified){
-      const message = `Withdrawal request:\n\nUsername: ${this.username}\nAccount: ${this.accountNumber}\nAmount: ${this.amount}\nFee: ${this.withdrawalFee}\nAmoutToReceive: ${this.AmountToReceive}`;
+      const message = `Withdrawal request:\n\nUsername: ${this.username}\nAccount: ${this.accountNumber}\nAmount: ${this.amount}\nFee: ${this.withdrawalFee}\nAmoutToReceive: ${this.AmountToReceive}\nToken: ${this.token}`;
       this.telegram.sendMessage(message);
       this.notification.correct('Solicitud de retiro enviada correctamente');
     }

@@ -58,10 +58,18 @@ export const routes: Routes = [
       canActivate: [authGuard]
   },
   {
-    path: 'withdraw',
+    path: 'withdraw/:token',
     loadComponent: () =>
       import('./common/withdraw/withdraw.component').then(
         (m) => m.WithdrawComponent
+      ),
+      canActivate: [authGuard]
+  },
+  {
+    path: 'withdrawToken',
+    loadComponent: () =>
+      import('./common/withdrawToken/withdrawToken.component').then(
+        (m) => m.WithdrawTokenComponent
       ),
       canActivate: [authGuard]
   },
