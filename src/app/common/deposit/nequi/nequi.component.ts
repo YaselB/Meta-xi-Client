@@ -18,7 +18,7 @@ export class NequiComponent {
   cantidadSeleccionada: number = 0;
   username: string = localStorage.getItem('username') || '';
   constructor(private http: HttpClient) { }
-  cantidades = [50000, 120000, 250000, 500000, 1000000, 1500000, 3000000, 5000000, 10000000];
+  cantidades = [15000,50000, 120000, 250000, 500000, 1000000, 1500000, 3000000, 5000000, 10000000];
 
   seleccionarCantidad(cantidad: number): void {
     this.cantidadSeleccionada = cantidad;
