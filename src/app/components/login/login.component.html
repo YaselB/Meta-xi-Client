@@ -21,7 +21,7 @@
 
             
             <div class="overflow-y-auto flex-grow flex flex-col gap-5 px-3">  
-                <app-form [typeLogin]="typeAuth" [isRegistered]="isRegistered"></app-form>  
+                <app-form [typeLogin]="typeAuth" [isRegistered]="isRegistered" class="overflow-y-auto"></app-form>  
                 <a (click)="goLogin()" class="text-center underline block">  
                    {{isRegistered ? '¿No tienes una cuenta? Regístrate' : '¿Ya tienes una cuenta? Inicia sesión'}}  
                 </a>  
