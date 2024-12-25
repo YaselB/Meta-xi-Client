@@ -19,10 +19,11 @@
         <button *ngIf="token !=='nequi'" class="bg-[#301E67] py-2 px-4 rounded-lg">USDT </button>
     </div>
 
-    <input *ngIf="token ==='nequi'" type="number" placeholder="Monto 20.000 - 10,000.000" class="w-full p-3 text-black rounded-lg" [(ngModel)]="amount" (input)="CalculateFees()">
+    <input *ngIf="token ==='nequi'" type="number" placeholder="Monto 15.000 - 10,000.000" class="w-full p-3 text-black rounded-lg" [(ngModel)]="amount" (input)="CalculateFees()">
     <input *ngIf="token !=='nequi'" type="number" placeholder="Monto 6 - 500" class="w-full p-3 text-black rounded-lg" [(ngModel)]="amount" (input)="CalculateFees()">
 
-    <textarea class="w-full p-3 text-black rounded-lg" placeholder="Número de cuenta" [(ngModel)]="accountNumber"></textarea>
+    <textarea *ngIf="token ==='nequi'" class="w-full p-3 text-black rounded-lg" placeholder="Número de cuenta" [(ngModel)]="accountNumber"></textarea>
+    <textarea *ngIf="token !=='nequi'" class="w-full p-3 text-black rounded-lg" placeholder="Dirección USDT-TRC20" [(ngModel)]="accountNumber"></textarea>
     <input placeholder="Contraseña" class="w-full p-3 text-black rounded-lg" type="password" [(ngModel)]="password">
     <div class="w-full flex items-center justify-between">
         <span class="text-sm text-gray-500">Comisión de retiro</span>
