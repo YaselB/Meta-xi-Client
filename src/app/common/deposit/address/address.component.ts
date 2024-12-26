@@ -16,6 +16,7 @@ export class AddressComponent implements OnInit {
   btnText: string = 'Recarga completada';
   link: string = 'TThr4nZA59XZ5MC8ZPkUdjPa7QAtpAx692';
   newLink: string = '';
+  username: string = localStorage.getItem('username') || '';
   @Input('token') token: string = '';
   format: string = 'png';
   minimo = 10;
@@ -78,7 +79,7 @@ export class AddressComponent implements OnInit {
     }
   }
   EnviarReferencia() {
-    const mensaje = `Nueva referencia enviada:\nEnlace: ${this.newLink}\nMonto: ${this.minimo} ${this.currency}`;
+    const mensaje = `Nueva referencia enviada:\nUsuario: ${this.username}\nEnlace: ${this.newLink}\nMonto: ${this.minimo} ${this.currency}`;
     this.telegramService.sendMessage(mensaje);
   }
 }
