@@ -3,6 +3,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { CommonModule, NgStyle, UpperCasePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { TelegramService } from '../../../services/products/Telegram.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-address',
@@ -14,6 +15,7 @@ import { TelegramService } from '../../../services/products/Telegram.service';
 export class AddressComponent implements OnInit {
   btnText: string = 'Recarga completada';
   link: string = 'TThr4nZA59XZ5MC8ZPkUdjPa7QAtpAx692';
+  newLink: string = '';
   @Input('token') token: string = '';
   format: string = 'png';
   minimo = 10;
@@ -60,7 +62,11 @@ export class AddressComponent implements OnInit {
         console.error('Error al copiar al portapapeles:', err);
       });
   }
-
+  onInputChange(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    this.newLink = inputElement.value;
+    console.log('Nuevo valor ingresado:', this.newLink); // Debug
+  }
   complete() {
     if (this.btnText === 'Recarga completada') {
       this.btnText = 'Confirmar';
@@ -72,7 +78,7 @@ export class AddressComponent implements OnInit {
     }
   }
   EnviarReferencia() {
-    const mensaje = `Nueva referencia enviada:\nEnlace: ${this.link}\nMonto: ${this.minimo} ${this.currency}`;
+    const mensaje = `Nueva referencia enviada:\nEnlace: ${this.newLink}\nMonto: ${this.minimo} ${this.currency}`;
     this.telegramService.sendMessage(mensaje);
   }
 }
