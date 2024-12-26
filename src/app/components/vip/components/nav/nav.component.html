@@ -1,13 +1,16 @@
 <div class="flex items-center bg-blue-950 mt-7 rounded-xl">
     <button (click)="getMisiones()" class="w-1/2 py-3 rounded-xl"
         [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': misiones}">Misiones</button>
-    <button (click)="getTendencia()" class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2 relative">
+    <button (click)="getTendencia()"
+    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': tendences}"
+    class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2 relative">
         <span>En tendencia</span>
         <div class="fire">
             🔥
         </div>
     </button>
-    <button (click)="getTerminadas()" class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2">
+    <button (click)="getTerminadas()"
+    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': finalize}" class="w-1/2 py-3 rounded-xl flex items-center justify-center gap-2">
         <span>Terminadas</span>
     </button>
 </div>

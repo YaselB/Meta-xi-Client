@@ -27,16 +27,13 @@ export class NavComponent implements OnInit {
     { id: 8, title: 'Invita 70 usuarios con recarga', goal: 70, progress: 0, claimed: false, reward: 30000 }
   ];
   
-  tendency = [
-    { id: 1, title: 'Invite 5 referidos en menos de 30 Minutos', goal: 5, progress: 0, claimed: false, reward: 2500 },
-    { id: 2, title: 'Consigue que 3 referidos recarguen sus cuentas en menos de 24 horas', goal: 3, progress: 0, claimed: false, reward: 5000 },
-    { id: 3, title: 'Completa 3 misiones el mismo día', goal: 3, progress: 0, claimed: false, reward: 2000 },
-    { id: 4, title: 'Invite 15 referidos en menos de 1 hora', goal: 15, progress: 0, claimed: false, reward: 3000 },
-    { id: 5, title: 'Invite 10 referidos válidos en menos de 24 horas', goal: 10, progress: 0, claimed: false, reward: 5000 },
-    { id: 6, title: 'Publique su enlace de referencia en su estado de WhatsApp', goal: 1, progress: 0, claimed: false, reward: 1500 },
-    { id: 7, title: 'Consiga que 12 de sus referidos recarguen sus cuentas', goal: 12, progress: 0, claimed: false, reward: 20000 },
-    { id: 8, title: 'Invite un amigo a recargar al menos 500Mil COP', goal: 1, progress: 0, claimed: false, reward: 50000 },
+   tendency = [
+    { id: 1, title: 'Dirige a un referido a comprar el VR3', goal: 1, progress: 0, claimed: false, reward: 4225 },
+    { id: 2, title: 'Dirige a un referido a comprar el VR4', goal: 1, progress: 0, claimed: false, reward: 6225 },
+    { id: 3, title: 'Dirige a un referido a comprar el VR5', goal: 1, progress: 0, claimed: false, reward: 9250 },
+    { id: 4, title: 'Dirige a un referido a comprar el VR6', goal: 1, progress: 0, claimed: false, reward: 12900 }
   ];
+  
   
 
 
