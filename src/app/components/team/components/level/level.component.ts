@@ -25,6 +25,7 @@ export class LevelComponent {
       this.lvl2.totalIncome = response.level2Earnings || 0;
       this.lvl3.register = response.quantityRefersLevel3 || 0;
       this.lvl3.totalIncome = response.level3Earnings || 0;
+      console.log(response);
     } catch (error) {
       console.error("Error al obtener los referidos", error);
     }

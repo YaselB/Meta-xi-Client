@@ -18,7 +18,7 @@
 <!-- Misiones -->
 <div *ngIf="misiones" class="flex flex-col p-6 gap-4 pb-20">
     <ng-container *ngFor="let i of missions">
-        <div class="w-full p-4 rounded-lg bg-blue-950 flex flex-col md:flex-row items-start md:items-center justify-between text-white">
+        <div *ngIf="!i.claimed" class="w-full p-4 rounded-lg bg-blue-950 flex flex-col md:flex-row items-start md:items-center justify-between text-white">
             <!-- Contenedor para el título y la recompensa -->
             <div class="w-full md:w-3/4 flex flex-col">
                 <!-- Título -->
@@ -32,7 +32,8 @@
             <!-- Botón siempre a la derecha -->
             <button class="w-full md:w-1/4 py-3 mt-2 md:mt-0 rounded-lg font-semibold bg-green-500 disabled:bg-gray-500 relative"
                 [disabled]="i.progress < i.goal || i.claimed"
-                [ngClass]="{'opacity-50': i.progress < i.goal || i.claimed, 'bg-gray-500': i.progress < i.goal || i.claimed}">
+                [ngClass]="{'opacity-50': i.progress < i.goal || i.claimed, 'bg-gray-500': i.progress < i.goal || i.claimed}"
+                (click)="Claim(i.id)">
                 <div *ngIf="i.progress < i.goal && !i.claimed"
                     class="absolute top-0 left-0 h-full bg-green-500 transition-all duration-300"
                     [style.width.%]="(i.progress/i.goal) * 100"

@@ -1,6 +1,10 @@
 import { CommonModule, NgClass } from '@angular/common'; // Import CommonModule
 
 import { Component, OnInit } from '@angular/core';
+import { Mission } from '../../Imisions';
+import { firstValueFrom } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { NotificationService } from '../../../../services/products/notification.service';
 
 
 @Component({
@@ -15,17 +19,8 @@ export class NavComponent implements OnInit {
   misiones = false;
   tendences = false;
   finalize = false;
-
-   missions = [
-    { id: 1, title: 'Invita 5 usuarios con recarga', goal: 5, progress: 0, claimed: false, reward: 10000 },
-    { id: 2, title: 'Invita 10 usuarios con recarga', goal: 10, progress: 0, claimed: false, reward: 20000 },
-    { id: 3, title: 'Invita 20 usuarios con recarga', goal: 20, progress: 0, claimed: false, reward: 20000 },
-    { id: 4, title: 'Invita 30 usuarios con recarga', goal: 30, progress: 0, claimed: false, reward: 20000 },
-    { id: 5, title: 'Invita 40 usuarios con recarga', goal: 40, progress: 0, claimed: false, reward: 30000 },
-    { id: 6, title: 'Invita 50 usuarios con recarga', goal: 50, progress: 0, claimed: false, reward: 30000 },
-    { id: 7, title: 'Invita 60 usuarios con recarga', goal: 60, progress: 0, claimed: false, reward: 30000 },
-    { id: 8, title: 'Invita 70 usuarios con recarga', goal: 70, progress: 0, claimed: false, reward: 30000 }
-  ];
+  username = localStorage.getItem('username');
+   missions : Mission [] = [];
   
    tendency = [
     { id: 1, title: 'Dirige a un referido a comprar el VR3', goal: 1, progress: 0, claimed: false, reward: 4225 },
@@ -35,10 +30,13 @@ export class NavComponent implements OnInit {
   ];
   
   
-
+constructor(private http: HttpClient,
+  private notification :NotificationService
+) { }
 
   ngOnInit(): void {
-    this.getMisiones(); // Inicialmente se muestran todas las misiones
+    this.getMisiones();
+    this.GetMissions(); // Inicialmente se muestran todas las misiones
   }
 
   getMisiones() {
@@ -58,4 +56,38 @@ export class NavComponent implements OnInit {
     this.tendences = false;
     this.misiones = false;// Filtra misiones completadas
   }
+  async GetMissions() {
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/MisionsUser/GetMissions/' + this.username;
+    try {
+      const response: Mission[] = await firstValueFrom(this.http.get<Mission[]>(url));
+      this.missions = response;
+      this.misiones = true;
+      console.log(this.missions);
+    } catch (error: any) {
+      console.error('Error al obtener las misiones:', error);
+    }
+  }
+  async Claim(id: number) {
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/MisionsUser/LogToClaim';
+  
+    // Construir el objeto data
+    const data = {
+      idMission: id,
+      username: this.username
+    };
+  
+    try {
+      // Realizar la petición POST
+      const response = await firstValueFrom(this.http.post(url, data));
+      console.log('Respuesta de la API:', response);
+      this.notification.correct(`¡Reclamaste la misión correctamente!`);
+      setTimeout(()=>
+      window.location.reload(),
+      7000
+      )
+    } catch (error: any) {
+      console.error('Error al reclamar la misión:', error);
+    }
+  }
+
 }
