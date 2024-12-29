@@ -41,24 +41,27 @@ export class TasksComponent implements OnInit {
     }
   }
   async gafasVR() {
-   try {
-    this.list = await this.GetPlans();
-    this.mine = true;
-   } catch (error) {
-    console.error('Error al obtener los planes: ',error);
-   }
-  }
-
-  async myGafas() {
     try {
-      this.list = await this.GetMyPlans();
-      this.mine = false;
-      console.log(this.mine);
-      console.log(this.list);
-    }catch(error){
-      console.error('Error al obtener mis planes: ',error);
+      const data = await this.GetPlans();
+      // Ordena la lista por idPlan en orden ascendente
+      this.list = data.sort((a: any, b: any) => b.idPlan - a.idPlan);
+      this.mine = true;
+    } catch (error) {
+      console.error('Error al obtener los planes: ', error);
     }
   }
+  
+  async myGafas() {
+    try {
+      const data = await this.GetMyPlans();
+      // Ordena la lista por idPlan en orden ascendente
+      this.list = data.sort((a: any, b: any) => a.idPlan - b.idPlan);
+      this.mine = false;
+    } catch (error) {
+      console.error('Error al obtener mis planes: ', error);
+    }
+  }
+  
   async GetMyPlans() : Promise<any>{
     const url = 'https://meta-api-production-3abd.up.railway.app/api/UserPlans/GetUserPlans/'+ this.username;
     try {
@@ -78,7 +81,7 @@ export class TasksComponent implements OnInit {
     }
   }
   async GetPlans() : Promise<any>{
-    const url = 'https://meta-api-production-3abd.up.railway.app/api/Plans/Plans/'+ this.username;
+    const url = 'http://localhost:5071/api/Plans/Plans/'+ this.username;
     try {
       const response = await firstValueFrom(this.http.get(url));
       console.log(response);
