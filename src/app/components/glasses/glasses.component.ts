@@ -44,7 +44,7 @@ export class TasksComponent implements OnInit {
     try {
       const data = await this.GetPlans();
       // Ordena la lista por idPlan en orden ascendente
-      this.list = data.sort((a: any, b: any) => b.idPlan - a.idPlan);
+      this.list = data.sort((a: any, b: any) => a.idPlan - a.idPlan);
       this.mine = true;
     } catch (error) {
       console.error('Error al obtener los planes: ', error);
