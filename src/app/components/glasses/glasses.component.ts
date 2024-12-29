@@ -81,7 +81,7 @@ export class TasksComponent implements OnInit {
     }
   }
   async GetPlans() : Promise<any>{
-    const url = 'http://localhost:5071/api/Plans/Plans/'+ this.username;
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/Plans/Plans/'+ this.username;
     try {
       const response = await firstValueFrom(this.http.get(url));
       console.log(response);
