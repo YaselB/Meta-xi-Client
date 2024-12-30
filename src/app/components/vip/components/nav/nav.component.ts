@@ -5,6 +5,7 @@ import { Mission } from '../../Imisions';
 import { firstValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NotificationService } from '../../../../services/products/notification.service';
+import { Completed } from '../../ICompleted';
 
 
 @Component({
@@ -21,13 +22,8 @@ export class NavComponent implements OnInit {
   finalize = false;
   username = localStorage.getItem('username');
    missions : Mission [] = [];
-  
-   tendency = [
-    { id: 1, title: 'Dirige a un referido a comprar el VR3', goal: 1, progress: 0, claimed: false, reward: 4225 },
-    { id: 2, title: 'Dirige a un referido a comprar el VR4', goal: 1, progress: 0, claimed: false, reward: 6225 },
-    { id: 3, title: 'Dirige a un referido a comprar el VR5', goal: 1, progress: 0, claimed: false, reward: 9250 },
-    { id: 4, title: 'Dirige a un referido a comprar el VR6', goal: 1, progress: 0, claimed: false, reward: 12900 }
-  ];
+   tendency : Mission [] = [];
+   completed : Completed [] = [];
   
   
 constructor(private http: HttpClient,
@@ -48,13 +44,15 @@ constructor(private http: HttpClient,
   getTendencia() {
     this.tendences = true;
     this.misiones = false;
-    this.finalize = false;// Filtra misiones en tendencia
+    this.finalize = false;
+    this.GetTendencia();
   }
 
   getTerminadas() {
     this.finalize = true;
     this.tendences = false;
-    this.misiones = false;// Filtra misiones completadas
+    this.misiones = false;
+    this.GetCompleted();
   }
   async GetMissions() {
     const url = 'https://meta-api-production-3abd.up.railway.app/api/MisionsUser/GetMissions/' + this.username;
@@ -67,8 +65,52 @@ constructor(private http: HttpClient,
       console.error('Error al obtener las misiones:', error);
     }
   }
+  async GetTendencia() {
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/TrendUser/GetTendency/' + this.username;
+    try {
+      const response: Mission[] = await firstValueFrom(this.http.get<Mission[]>(url));
+      this.tendency = response;
+      this.tendences = true;
+      console.log(this.tendency);
+    } catch (error: any) {
+      console.error('Error al obtener las misiones:', error);
+    }
+  }
+  async GetCompleted(){
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/TrendUser/GetCompletedMissions/'+this.username;
+    try {
+      const response: Completed[] = await firstValueFrom(this.http.get<Completed[]>(url));
+      this.completed = response;
+      this.finalize = true;
+      console.log(this.completed);
+    } catch (error : any) {
+      console.error('Error al obtener las misiones:', error);
+    }
+  }
   async Claim(id: number) {
     const url = 'https://meta-api-production-3abd.up.railway.app/api/MisionsUser/LogToClaim';
+  
+    // Construir el objeto data
+    const data = {
+      idMission: id,
+      username: this.username
+    };
+  
+    try {
+      // Realizar la petición POST
+      const response = await firstValueFrom(this.http.post(url, data));
+      console.log('Respuesta de la API:', response);
+      this.notification.correct(`¡Reclamaste la misión correctamente!`);
+      setTimeout(()=>
+      window.location.reload(),
+      7000
+      )
+    } catch (error: any) {
+      console.error('Error al reclamar la misión:', error);
+    }
+  }
+  async ClaimTendency(id: number) {
+    const url = 'https://meta-api-production-3abd.up.railway.app/api/TrendUser/LogToClaim';
   
     // Construir el objeto data
     const data = {

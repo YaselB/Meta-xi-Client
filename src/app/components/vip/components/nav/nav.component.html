@@ -50,7 +50,7 @@
 <!-- Tendencias -->
 <div *ngIf="tendences" class="flex flex-col p-6 gap-4 pb-20">
     <ng-container *ngFor="let i of tendency">
-        <div class="w-full p-4 rounded-lg bg-blue-950 flex flex-col md:flex-row items-start md:items-center justify-between text-white">
+        <div *ngIf="!i.claimed" class="w-full p-4 rounded-lg bg-blue-950 flex flex-col md:flex-row items-start md:items-center justify-between text-white">
             <!-- Contenedor para el título y la recompensa -->
             <div class="w-full md:w-3/4 flex flex-col">
                 <!-- Título -->
@@ -63,6 +63,7 @@
 
             <!-- Botón siempre a la derecha -->
             <button class="w-full md:w-1/4 py-3 mt-2 md:mt-0 rounded-lg font-semibold bg-green-500 disabled:bg-gray-500 relative"
+                (click)="ClaimTendency(i.id)"
                 [disabled]="i.progress < i.goal || i.claimed"
                 [ngClass]="{'opacity-50': i.progress < i.goal || i.claimed, 'bg-gray-500': i.progress < i.goal || i.claimed}">
                 <div *ngIf="i.progress < i.goal && !i.claimed"
@@ -77,6 +78,26 @@
         </div>
     </ng-container>
 </div>
+<!-- Completadas -->
+<div *ngIf="finalize" class="flex flex-col p-6 gap-4 pb-20">
+    <ng-container *ngFor="let c of completed">
+        <div class="w-full p-4 rounded-lg bg-blue-950 flex items-center justify-between text-white">
+            <!-- Título -->
+            <div class="font-bold">
+                {{ c.title }}
+            </div>
+            <!-- Recompensa -->
+            <div class="text-center">
+                <strong>Recompensa: {{ c.reward }} COP</strong>
+            </div>
+            <!-- Mensaje de completado -->
+            <div class="text-right text-green-500 font-semibold">
+                Completado
+            </div>
+        </div>
+    </ng-container>
+</div>
+
 
 
 
