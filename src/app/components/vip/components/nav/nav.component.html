@@ -20,7 +20,7 @@
         
         <div class="w-full p-4 rounded-lg bg-blue-950 flex items-center justify-between text-white">
             <!-- Título de la misión a la izquierda -->
-            <h3 class="font-bold w-2/6  sm:w-3/4">{{i.title}}</h3>
+            <h3 class="font-bold w-2/6 sm:w-3/4">{{i.title}}</h3>
 
             <!-- Contenedor para la recompensa centrado -->
             <div class="text-white absolute left-1/2 transform -translate-x-1/2">
@@ -47,11 +47,11 @@
     <ng-container *ngFor="let i of tendency">
         <div class="w-full p-4 rounded-lg bg-blue-950 flex items-center justify-between text-white">
             <!-- Título de la misión a la izquierda -->
-            <h3 class="font-bold sm:w-3/4">{{i.title}}</h3>
+            <h3 class="font-bold w-2/6 sm:w-3/4">{{i.title}}</h3>
 
             <!-- Contenedor para la recompensa centrado -->
             <div class="text-white absolute left-1/2 transform -translate-x-1/2">
-                <strong>Recompensa: {{i.reward}} COP</strong>
+                <strong><span class="hidden sm:block">Recompensa: </span>{{i.reward}} COP</strong>
             </div>
 
             <!-- Botón al final -->
@@ -63,7 +63,7 @@
                 [style.width.%]="(i.progress/i.goal) * 100"
                 style="z-index: 0;">  
                 </div>
-                <span class="relative z-10" *ngIf="i.progress < i.goal && !i.claimed">Progreso : {{i.progress}}/{{i.goal}}</span>
+                <span class="relative z-10" *ngIf="i.progress < i.goal && !i.claimed"><span class="hidden sm:block">Progreso : </span>{{i.progress}}/{{i.goal}}</span>
                 <span class="relative z-10" *ngIf="!i.claimed && i.progress === i.goal">Reclamar</span>
                 <span class="relative z-10" *ngIf="i.claimed">Reclamado</span>
             </button>
