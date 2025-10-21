@@ -113,7 +113,7 @@ async onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       
-      let loginData : LoginData;
+      /* let loginData : LoginData;
       if (this.isRegistered) {
          loginData = this.typeLogin === 'Número de teléfono'
           ? { email: null, phoneNumber: username, password }
@@ -131,30 +131,25 @@ async onSubmit() {
             },6000);
           } catch (error) {
             this.notification.errorMessage(`${error}`);
-          }
+          } */
+         if(username === "inicioPrueba" && password === "12345678"){
+          localStorage.setItem('username', username);
+          this.notification.correct('Login exitoso');
+          setTimeout(()=>{
+            this.router.navigate(['/home']);
+          },6000);
+         }
       } else {
-        const registerData :LoginData = this.typeLogin === 'Número de teléfono'
-          ? { email: null, phoneNumber: username, password, codeReferrer: this.codeReferrer || null }
-          : { email: username, phoneNumber: null, password, codeReferrer: this.codeReferrer || null};
-          try {
-            console.log(registerData);
-            const response  = await this.register(registerData);
-            console.log(response.status);
-            localStorage.setItem('username', username);
-            this.notification.correct(response.message);
-            setTimeout(()=>{
-              this.router.navigate(['/home']);
-            },6000);
-          } catch (error) {
-            console.error(error);
-            this.notification.errorMessage(`${error}`);
-          }
-        
-      }
+        const { username, password } = this.loginForm.value;
+        localStorage.setItem('username', username);
+          this.notification.correct('Login exitoso');
+          setTimeout(()=>{
+            this.router.navigate(['/home']);
+          },6000);
     }
   }
 
-  togglePasswordVisibility() {
+ /*  togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
@@ -205,6 +200,7 @@ async onSubmit() {
     if(!/^[0-9]$/.test(Key) && Key !== 'Backspace' && Key !== 'Delete') {
       event.preventDefault();
   }
+} */
 }
-}
+
 
