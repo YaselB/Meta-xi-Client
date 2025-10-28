@@ -1,31 +1,31 @@
 <div class="fixed top-0 left-0 w-screen h-screen flex flex-col sm:flex-row overflow-y-auto">
-    <!-- Sección de Imagen -->
+
     <div class="flex w-screen md:w-1/2 h-1/3 sm:h-auto login_img_section">
-        <img src="assets/others/login.jpg" alt="avatar" class="sm:hidden w-full">
+        <img src="assets\others\photo_2025-10-27_14-50-28.jpg" alt="avatar" class="sm:hidden w-full">
     </div>
 
-    <!-- Sección del Formulario -->
-    <div class="flex w-full sm:w-1/2 h-2/3 sm:h-auto justify-center items-center relative bg-[#3E183D]">
-        <div class="w-full h-full px-3 sm:p-5 flex flex-col gap-5">
-            <!-- Botones de Alternativa de Inicio de Sesión -->
-            <div class="flex items-center bg-blue-950 -mt-3 rounded-xl shadow-xl">
-                <button (click)="email()" class="w-1/2 sm:p-4 p-2 rounded-xl text-center"
-                    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': btnC}">
+    <div class="flex w-full sm:w-1/2 h-2/3 sm:h-auto justify-center items-center relative bg-[#E0E0E5]">
+        <div class="w-full h-full px-3 sm:p-5 flex flex-col gap-5 text-[#333333]"> 
+            
+            <div class="flex items-center bg-[#CDCDD2] -mt-3 rounded-xl shadow-xl border border-[#B0B0B5] text-[#333333]">
+                
+                <button (click)="email()" class="w-1/2 sm:p-4 p-2 rounded-xl text-center transition-all duration-300 ease-in-out"
+                    [ngClass]="{'bg-[#0089B3] shadow-xl font-semibold ring-4 ring-black ring-opacity-20 text-white': btnC, 'hover:bg-[#B0B0B5] text-[#333333]': !btnC}">
                     {{isRegistered ? 'Iniciar sesión por correo electrónico' : 'Registrarse por correo electrónico'}}
                 </button>
-                <button (click)="telf()" class="w-1/2 h-full sm:p-4 p-2 rounded-xl text-center"
-                    [ngClass]="{'bg-[#301E67] shadow-xl font-semibold': !btnC}">
+                
+                <button (click)="telf()" class="w-1/2 h-full sm:p-4 p-2 rounded-xl text-center transition-all duration-300 ease-in-out"
+                    [ngClass]="{'bg-[#0089B3] shadow-xl font-semibold ring-4 ring-black ring-opacity-20 text-white': !btnC, 'hover:bg-[#B0B0B5] text-[#333333]': btnC}">
                     {{isRegistered ? 'Iniciar sesión por teléfono' : 'Registrarse por teléfono'}}
                 </button>
             </div>
-
             
-            <div class="overflow-y-auto flex-grow flex flex-col gap-5 px-3">  
-                <app-form [typeLogin]="typeAuth" [isRegistered]="isRegistered"></app-form>  
-                <a (click)="goLogin()" class="text-center underline block">  
-                   {{isRegistered ? '¿No tienes una cuenta? Regístrate' : '¿Ya tienes una cuenta? Inicia sesión'}}  
-                </a>  
-             </div>
+            <div class="overflow-y-auto flex-grow flex flex-col gap-5 px-3">  
+                <app-form [typeLogin]="typeAuth" [isRegistered]="isRegistered"></app-form>  
+                <a (click)="goLogin()" class="text-center underline block text-gray-700 hover:text-[#0089B3] transition-colors duration-200">  
+                    {{isRegistered ? '¿No tienes una cuenta? Regístrate' : '¿Ya tienes una cuenta? Inicia sesión'}}  
+                </a>  
+            </div>
         </div>
     </div>
 </div>

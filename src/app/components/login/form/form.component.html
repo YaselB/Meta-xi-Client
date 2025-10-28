@@ -1,11 +1,9 @@
-
 <form class="px-4 flex flex-col sm:gap-5 gap-2" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <!-- Campo de usuario -->
     <div class="mb-2">
-        <label for="username" class="block sm:py-4 pb-2">{{typeLogin}}:</label>
+        <label for="username" class="block sm:py-4 pb-2 text-[#333333]">{{typeLogin}}:</label>
         <div class="flex">
             <span *ngIf="typeLogin==='Número de teléfono'" class="inline-flex items-center px-3 bg-gray-200 border border-r-0 border-gray-300 text-gray-900 rounded-l-md">+57</span>
-            <input id="username"    
+            <input id="username"    
                 [attr.type]="typeLogin === 'Número de teléfono' ? 'tel' : 'text'"
                 [attr.inputmode]="typeLogin === 'Número de teléfono' ? 'numeric' : 'text'"
                 formControlName="username"
@@ -17,9 +15,8 @@
         <small *ngIf="loginForm.get('username')?.errors?.['usernameInvalid'] && loginForm.get('username')?.touched" class="text-red-500">{{loginForm.get('username')?.errors?.['usernameInvalid']}}</small>
     </div>
 
-    <!-- Campo de contraseña -->
     <div class="mb-2">
-        <label for="password" class="block sm:py-4 pb-2">Contraseña:</label>
+        <label for="password" class="block sm:py-4 pb-2 text-[#333333]">Contraseña:</label>
         <div class="relative">
             <input id="password" [type]="passwordFieldType" formControlName="password"
                 class="w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
@@ -31,9 +28,8 @@
         <small *ngIf="loginForm.get('password')?.errors?.['passwordInvalid'] && loginForm.get('password')?.touched" class="text-red-500">{{loginForm.get('password')?.errors?.['passwordInvalid']}}</small>
     </div>
 
-    <!-- Campo de repetir contraseña -->
     <div *ngIf="!isRegistered" class="mb-2">
-        <label for="newPassword" class="block sm:py-4 pb-2 mt-1">Repetir contraseña:</label>
+        <label for="newPassword" class="block sm:py-4 pb-2 mt-1 text-[#333333]">Repetir contraseña:</label>
         <div class="relative">
             <input id="newPassword" [type]="passwordFieldType" formControlName="newPassword"
                 class="w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
@@ -46,8 +42,7 @@
         <small *ngIf="loginForm.errors?.['mismatch'] && loginForm.get('newPassword')?.touched" class="text-red-500">Las contraseñas no coinciden.</small>
     </div>
 
-    <button type="submit" class="w-full px-4 py-4 cursor-pointer bg-[#301E67] font-semibold rounded-md">
+    <button type="submit" class="w-1/2 px-4 py-4 cursor-pointer bg-[#0089B3] font-semibold rounded-md text-white mx-auto shadow-lg hover:bg-[#006f91] transition-colors duration-200">
         {{isRegistered ? 'Iniciar Sesión' : 'Registrarse'}}
     </button>
 </form>
-
